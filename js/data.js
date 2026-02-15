@@ -11,22 +11,26 @@ const websiteData = {
     // PERSONAL INFO
     // ==================
     personal: {
-        name: "Srinidhi G.S",
+        name: "Srinidhi G S",
         title: "Product Designer",
-        // Short bio that appears in the header (1-2 sentences)
-        headerBio: "Product Designer with experience delivering enterprise and AI-enabled digital products, driving analytics-informed improvements in retention and task efficiency.",
+
+        // Short bio that appears in the header
+        headerBio: "Product Designer working across UX, AI systems, and product strategy, with a focus on retention, clarity, and scale.",
 
         // Longer bio for the About page
-        fullBio: "Product Designer with experience delivering enterprise and AI-enabled digital products, driving analytics-informed improvements in retention (D1 15% → 42%, D7 0.2% → 9%), and task efficiency. Experienced in responsible AI UX (human-in-the-loop, transparency, governance), designing internal tools in regulated environments, and collaborating with engineering through HTML/CSS specifications.",
+        fullBio: "I design and ship AI-native and enterprise products, working end-to-end from discovery to launch. My work spans AI interaction design, internal tools, and consumer experiences, with a strong focus on retention, usability, and UX-led product decisions.",
 
-        // Contact information
+        // Contact & links
         email: "gssrinidhi2002@gmail.com",
         phone: "+91 94422 33012",
-        portfolio: "#", // Update with your portfolio URL if different
+        portfolio: "#",
         linkedin: "https://www.linkedin.com/in/gssrinidhi/",
         behance: "https://www.behance.net/gssrinidhi",
 
-        // Profile image (put your photo in images/ folder)
+        // Resume PDF (place file in /public or /assets)
+        resume: "assets/Srinidhi_GS_Resume.pdf",
+
+        // Profile image
         profileImage: "images/profile.jpg"
     },
 
@@ -36,49 +40,23 @@ const websiteData = {
     experience: [
         {
             company: "Terra",
-            role: "UX Designer → Product Owner (UX-Led)",
-            period: "December 2024 – Present",
-            achievements: [
-                "Owned end-to-end UX execution for four AI-native titles, covering FTUE, core loop validation, and AI interaction design, achieving 17% Day-1 retention and 12% overall app retention at launch; reduced early AI complexity by 17% through modular onboarding systems.",
-                "Outlined AI interaction frameworks, including prompt flows, behavioral guardrails, and narrative constraints, to stabilize LLM-driven gameplay and improve predictability across live iterations.",
-                "Standardized Figma design systems aligned with Unity implementation constraints, improving designer–developer handoff and reducing UI build cycles by ~67% (≈1 week saved per iteration) across 8 teams.",
-                "Validated product direction through rapid 2-week proof-of-concept cycles, synthesizing insights from 200+ user interviews and cohort-based metrics to inform roadmap prioritization and early kill/iterate decisions.",
-                "Executed UX for a self-service AI analytics platform, removing analyst bottlenecks and reducing insight latency from 4+ hours to real time, enabling 2× faster PMF validation across 8 game teams.",
-                "Led design-driven execution for AI-native games from 0 → 1, contributing to PMF initiatives across 15+ games and 11+ features for 8L+ users.",
-                "Contributed to top-10% global retention outcomes, improving Day-1 retention from 15% → 42% and Day-7 retention from 0.2% → 9% through iterative UX improvements.",
-                "Refactored friction-heavy onboarding and gameplay touchpoints, validating improvements via cohort analysis, A/B testing, funnel analysis, and telemetry, and supporting social-first features that drove 1.5× retention and 2× virality."
-            ]
+            role: "UX Designer → UX-Led Product Ownership",
+            period: "December 2024 – Present"
         },
         {
             company: "Société Générale – Global Solution Centre",
             role: "UX Design Intern",
-            period: "April 2024 – August 2024",
-            achievements: [
-                "Refined engagement personas, user journeys, and information architecture to improve task efficiency and support alignment with business OKRs.",
-                "Created wireframes and interactive prototypes to clearly communicate design intent, validate usability, and support iterative product development.",
-                "Contributed to a scalable platform with three integrated modules by standardizing design frameworks and visual systems, ensuring consistency, usability, and maintainability across the product."
-            ]
+            period: "April 2024 – August 2024"
         },
         {
             company: "Remapped",
             role: "UX Design Intern",
-            period: "February 2024 – December 2024",
-            achievements: [
-                "Developed user-centered, scalable interfaces that enhanced engagement and accessibility for a career-focused platform.",
-                "Applied UX strategies to support diverse user needs, increasing retention by 15% and strengthening brand credibility.",
-                "Achieved overall CTR improvement of 7% and engagement time increase of 9%, positioning the platform as a career growth resource startup."
-            ]
+            period: "February 2024 – December 2024"
         },
         {
             company: "Bata India Limited",
             role: "Technical Product Design Intern",
-            period: "August 2021 – September 2021",
-            achievements: [
-                "Interned in the Footwear Collection Department, translating 8+ design concepts into production-ready prototypes aligned with manufacturing requirements.",
-                "Collaborated on 12+ fit-focused patterns and created technical drawings and specifications to support accurate production handoff.",
-                "Conducted industry and market trend research and developed 5+ digital prototypes using CAD tools to support product innovation and design validation.",
-                "Participated in 6+ cross-functional design–production meetings, contributing to improved workflow alignment between design and manufacturing teams."
-            ]
+            period: "August 2021 – September 2021"
         }
     ],
 
@@ -88,10 +66,10 @@ const websiteData = {
     education: [
         {
             institution: "Pearl Academy, Delhi",
-            degree: "Bachelor's Degree – User Experience & Interaction Design",
+            degree: "Bachelor’s Degree — User Experience & Interaction Design",
             grade: "First Class",
             period: "2020 – 2024",
-            project: "A speculative study on the 'no-interface' paradigm, proposing how interaction design may transform as technological singularity renders traditional interfaces obsolete."
+            project: "Speculative thesis exploring the 'no-interface' paradigm and post-UI interaction futures."
         }
     ],
 
@@ -99,37 +77,25 @@ const websiteData = {
     // SKILLS
     // ==================
     skills: {
-        "Product and Design Skills": [
-            "Product Design & End-to-End UX Execution",
-            "UX Strategy & Problem Framing",
-            "User Research & Usability Testing",
-            "Interaction Design & Information Architecture",
+        "Focus Areas": [
+            "UX-Led Product Strategy",
+            "AI Interaction Design & Responsible AI",
+            "Retention & Activation",
             "Design Systems",
-            "Accessibility & Inclusive Design (WCAG fundamentals)",
-            "Data-Informed Decision Making",
-            "Activation & Retention Optimization",
-            "Funnel & Cohort Analysis",
-            "A/B Testing & Experimentation",
-            "Cross-Functional Collaboration",
-            "Rapid Iteration"
+            "Data-Informed Decision Making"
         ],
-        "Technical Tools": [
+        "Tools": [
             "Figma",
             "Mixpanel",
-            "Git",
-            "GitHub",
-            "Jira",
-            "Miro",
             "CleverTap",
             "Google Analytics",
-            "Unity (UX collaboration context)",
-            "Basic C#",
-            "Microsoft Excel",
-            "PowerPoint",
-            "Word",
-            "Front-end collaboration"
+            "Jira",
+            "Git & GitHub",
+            "Unity (UX collaboration)",
+            "Basic C#"
         ]
     },
+
 
     // ==================
     // PROJECTS

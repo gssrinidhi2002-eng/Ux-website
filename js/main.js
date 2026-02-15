@@ -165,6 +165,11 @@ function initProjectPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const projectId = urlParams.get('id');
 
+  // Apply dark theme for COSMOS project
+  if (projectId === 'cosmos-speculative') {
+    document.body.classList.add('dark-theme-cosmos');
+  }
+
   // Use projectsData if available, fallback to websiteData.projects
   const projects = typeof projectsData !== 'undefined' ? projectsData : (websiteData.projects || []);
 

@@ -1,0 +1,43 @@
+/* ==================
+   DARK THEME FOR COSMOS PROJECT
+   ================== */
+
+/* Apply dark theme only to COSMOS project page */
+body.dark-theme-cosmos {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.dark-theme-cosmos .site-header {
+    background-color: #000000;
+    border-bottom-color: #333333;
+}
+
+body.dark-theme-cosmos .site-title,
+body.dark-theme-cosmos .nav-link,
+body.dark-theme-cosmos .header-bio {
+    color: #ffffff;
+}
+
+body.dark-theme-cosmos .site-title:hover,
+body.dark-theme-cosmos .nav-link:hover {
+    opacity: 0.7;
+    color: #ffffff;
+}
+
+body.dark-theme-cosmos .project-detail-title,
+body.dark-theme-cosmos .project-description,
+body.dark-theme-cosmos .project-detail-description,
+body.dark-theme-cosmos .meta-label,
+body.dark-theme-cosmos .meta-item span,
+body.dark-theme-cosmos p {
+    color: #ffffff !important;
+}
+
+body.dark-theme-cosmos .project-meta {
+    border-top-color: #333333;
+}
+
+body.dark-theme-cosmos .meta-label {
+    color: #999999;
+}

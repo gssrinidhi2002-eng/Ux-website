@@ -52,17 +52,17 @@ const projectsData = [
     // ==================
 
     {
-        id: "The-Paradox-of-Choice",
-        title: "The Paradox of Choice",
-        description: "Spotify",
-        tags: ["Monetization", "Personalization", "Retention"],
-        thumbnail: "images/projects/spotify/spotify_Thumbnail.png",
+        id: "Zepto-ui",
+        title: "Smartlist - Zepto",
+        description: "From Intent to Checkout: Eliminating SKU-Hunting in High-Frequency Grocery Orders",
+        tags: ["UX Redesign", "Quick commerce", "Product Feature"],
+        thumbnail: "images/projects/Zepto/Zepto Thumbnail.png",
         year: "2025",
         role: "R&R / Product Strategy",
-        //collaborators: "Terra Design Team, Engineering",
-        details: " Spotify must balance personalization, monetization, and regional UX—avoiding over-personalization, minimizing churn from ads or paywalls, and adapting to regional ARPU differences—to sustainably grow engagement, retention, and revenue.",
+        //collaborators: "Remapped Team",
+        details: "By shifting effort from the user to the platform, the flow reduces repetitive searching, lowers cognitive load, and accelerates multi-item ordering. Designed for frequent shoppers, SmartList addresses a core search bottleneck while improving Search-to-Add-to-Cart conversion and overall order efficiency.",
         images: [
-            "images/projects/spotify/spotify.png"
+            "images/projects/Zepto/Zepto.png"
         ]
     },
 
@@ -82,17 +82,49 @@ const projectsData = [
     },
 
     {
-        id: "Wander-app",
-        title: "Wander",
-        description: "Designing for slow travel, mindful discovery, and personal storytelling",
-        tags: ["DESIGN SYSTEMS", "App design", "Travel"],
-        thumbnail: "images/projects/Wander/wander thumbnail.png",
-        year: "2022",
-        role: "UX UI Designer",
-        //collaborators: "Société Générale GSC Team",
-        details: "Wander explores how digital travel experiences can move beyond efficiency and recommendations to support reflection, curiosity, and personal narrative. The project combines visual storytelling, interface design, and experiential flow to create a travel companion that encourages users to slow down, notice their surroundings, and engage meaningfully with places. Through mood-driven visuals, intuitive navigation, and content pacing, Wander prioritizes feeling over optimization. The design reframes travel as a personal journey shaped by memory, atmosphere, and discovery—challenging conventional travel apps that prioritize speed, volume, and utility over experience.",
+        id: "The-Paradox-of-Choice",
+        title: "The Paradox of Choice",
+        description: "Spotify",
+        tags: ["Monetization", "Personalization", "Retention"],
+        thumbnail: "images/projects/spotify/spotify_Thumbnail.png",
+        year: "2025",
+        role: "R&R / Product Strategy",
+        //collaborators: "Terra Design Team, Engineering",
+        details: " Spotify must balance personalization, monetization, and regional UX—avoiding over-personalization, minimizing churn from ads or paywalls, and adapting to regional ARPU differences—to sustainably grow engagement, retention, and revenue.",
         images: [
-            "images/projects/Wander/Wander.png"
+            "images/projects/spotify/spotify.png"
+        ]
+    },
+
+
+    {
+        id: "Aurora-bt",
+        title: "Aurora",
+        description: "Where color becomes personal",
+        tags: ["Branding", "Financial Systems", "Color Theory"],
+        thumbnail: "images/projects/Aurora/Auroa_thumbnail.png",
+        year: "2023",
+        role: "Brand Identity & Packaging Design",
+        //collaborators: "Remapped Team",
+        details: "Aurora is a luxury personalization platform inspired by studio-driven color practices where making color is slow, intentional, and deeply human. The project explores how bespoke palettes, crafted through guided color mixing, can become expressions of identity, memory, and connection. By elevating art materials beyond utility, Aurora positions creativity as an emotional ritual.",
+        images: [
+            "images/projects/Aurora/aurora.png"
+        ]
+    },
+
+    {
+        id: "Pukar-game",
+        title: "Pukar",
+        description: "A sound-driven psychological horror game where silence is as dangerous as noise",
+        tags: ["Monetization", "Sound-Driven Gameplay", "Retention"],
+        thumbnail: "images/projects/Pukar/pukar Thumbnail.png",
+        year: "2024",
+        role: "Game & UI/UX Designer",
+        //collaborators: "Terra Design Team, Engineering",
+        details: " Pukar is a horror gameplay that immerses players in a terrifying, abandoned environment, where every sound matters. Guided by a distant voice and surrounded by lurking dangers, players must navigate the dark, unseen world using sound as primary mechanics, with every wrong turn pushing them closer to lurking zombies.",
+        images: [
+            "images/projects/Pukar/Pukar 1.png",
+            "images/projects/Pukar/Pukar2.png"
         ]
     },
 
@@ -127,9 +159,40 @@ const projectsData = [
     },
 
     {
+        id: "Wander-app",
+        title: "Wander",
+        description: "Designing for slow travel, mindful discovery, and personal storytelling",
+        tags: ["DESIGN SYSTEMS", "App design", "Travel"],
+        thumbnail: "images/projects/Wander/wander thumbnail.png",
+        year: "2022",
+        role: "UX UI Designer",
+        //collaborators: "Société Générale GSC Team",
+        details: "Wander explores how digital travel experiences can move beyond efficiency and recommendations to support reflection, curiosity, and personal narrative. The project combines visual storytelling, interface design, and experiential flow to create a travel companion that encourages users to slow down, notice their surroundings, and engage meaningfully with places. Through mood-driven visuals, intuitive navigation, and content pacing, Wander prioritizes feeling over optimization. The design reframes travel as a personal journey shaped by memory, atmosphere, and discovery—challenging conventional travel apps that prioritize speed, volume, and utility over experience.",
+        images: [
+            "images/projects/Wander/Wander.png"
+        ]
+    },
+
+    {
+        id: "Go-pj",
+        title: "GO",
+        description: "An inclusive, multi-sensory music experience beyond listening",
+        tags: ["Inclusivity", "Product Design", "Experiential Learning"],
+        thumbnail: "images/projects/Go/go thumbnail.png",
+        year: "2022",
+        role: "Product Design & Research",
+        //collaborators: "Bata India Design & Production Teams",
+        details: "Go is an experiential product concept that reimagines how music can be perceived beyond sound. By combining visual, tactile, and sensory cues, the project explores inclusive ways for both hearing and hearing-impaired individuals to experience music.",
+        images: [
+            "images/projects/Go/go.png"
+        ]
+
+    },
+
+    {
         id: "social-enterprise",
         title: "Krishi",
-        description: "A complex, “wicked” systems problem where agriculture, education, ecology, and social values intersect—resisting linear or purely technical solutions.",
+        description: "A wicked, multi-system challenge beyond linear solutions",
         tags: ["Systems Thinking", "Social Impact", "Experiential Learning"],
         thumbnail: "images/projects/Krishi/krishi_thumbnail.png",
         year: "2021",
@@ -139,6 +202,7 @@ const projectsData = [
         images: [
             "images/projects/Krishi/krishi.png"
         ]
+
     }
 
     /* =====================================================

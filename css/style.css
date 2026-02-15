@@ -1,0 +1,505 @@
+/* =====================================================
+   PORTFOLIO WEBSITE STYLES
+   Inspired by Isaac Blankensmith's minimalist aesthetic
+   ===================================================== */
+
+/* Import modern sans-serif font (similar to Suisse Int'l) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ==================
+   GLOBAL RESET & BASE STYLES
+   ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-border: #e0e0e0;
+  --color-hover: #000000;
+  
+  /* Typography */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --line-height: 1.6;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 32px;
+  --spacing-lg: 48px;
+  --spacing-xl: 64px;
+  --spacing-xxl: 96px;
+  
+  /* Layout */
+  --max-width: 1400px;
+  --content-padding: 40px;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================
+   TYPOGRAPHY
+   ================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==================
+   HEADER
+   ================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--spacing-md) var(--content-padding);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg);
+  z-index: 100;
+}
+
+.header-left {
+  max-width: 60%;
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+  display: inline-block;
+}
+
+.site-title:hover {
+  opacity: 0.7;
+}
+
+.header-bio {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+.header-right {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.nav-link {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  position: relative;
+}
+
+.nav-link::before {
+  content: '↳';
+  margin-right: 4px;
+}
+
+/* ==================
+   MAIN CONTENT
+   ================== */
+.main-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--content-padding);
+}
+
+/* ==================
+   PROJECT GRID (Home Page)
+   ================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.project-card {
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+  opacity: 0.7;
+}
+
+.project-thumbnail {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+  background-color: #f5f5f5;
+}
+
+.project-info {
+  padding: var(--spacing-xs) 0;
+}
+
+.project-title {
+  font-size: var(--font-size-large);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-description {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.5;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background-color: var(--color-bg);
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* ==================
+   ABOUT PAGE
+   ================== */
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-header {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.about-intro {
+  flex: 1;
+}
+
+.about-name {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-small);
+}
+
+.contact-link::before {
+  content: '↳';
+  margin-right: 4px;
+}
+
+.bio-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.experience-item,
+.education-item {
+  margin-bottom: var(--spacing-lg);
+}
+
+.item-header {
+  margin-bottom: var(--spacing-sm);
+}
+
+.item-title {
+  font-size: var(--font-size-large);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.item-meta {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.achievements-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.achievements-list li {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.achievements-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-text);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.skills-category {
+  margin-bottom: var(--spacing-md);
+}
+
+.skills-category h4 {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skills-list {
+  list-style: none;
+}
+
+.skills-list li {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  margin-bottom: 8px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.skills-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+}
+
+/* ==================
+   PROJECT DETAIL PAGE
+   ================== */
+.project-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.project-detail-title {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-meta {
+  display: flex;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-weight: 500;
+  color: var(--color-text);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.project-detail-description {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.project-images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================
+   RESPONSIVE DESIGN
+   ================== */
+@media (max-width: 768px) {
+  :root {
+    --content-padding: 24px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+  }
+  
+  .site-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .header-left {
+    max-width: 100%;
+  }
+  
+  .header-right {
+    width: 100%;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .about-header {
+    flex-direction: column;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .project-meta {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  
+  .site-title {
+    font-size: 18px;
+  }
+  
+  .project-detail-title {
+    font-size: 28px;
+  }
+}
+
+/* ==================
+   UTILITY CLASSES
+   ================== */
+.loading {
+  text-align: center;
+  padding: var(--spacing-xxl);
+  color: var(--color-text-light);
+}
+
+.error {
+  text-align: center;
+  padding: var(--spacing-xxl);
+  color: #d32f2f;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-small);
+}
+
+.back-link::before {
+  content: '← ';
+  margin-right: 4px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

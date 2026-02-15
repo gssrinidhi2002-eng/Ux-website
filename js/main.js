@@ -29,6 +29,9 @@ function initHomePage() {
   const projectsGrid = document.getElementById('projects-grid');
   if (!projectsGrid) return;
 
+  // Clear loading text
+  projectsGrid.innerHTML = '';
+
   websiteData.projects.forEach(project => {
     const projectCard = createProjectCard(project);
     projectsGrid.appendChild(projectCard);

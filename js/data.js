@@ -11,11 +11,11 @@ const websiteData = {
     // PERSONAL INFO
     // ==================
     personal: {
-        name: "Srinidhi G S",
+        name: "Srinidhi G.S",
         title: "Product Designer",
 
         // Short bio that appears in the header
-        headerBio: "Product Designer working across UX, AI systems, and product strategy, with a focus on retention, clarity, and scale.",
+        headerBio: "Product designer working across UX and product thinking. I design digital products by focusing on how people actually use them—what slows them down, what confuses them, and what keeps them coming back. Currently working on games and internal tools, owning UX from early exploration through launch.",
 
         // Longer bio for the About page
         fullBio: "I design and ship AI-native and enterprise products, working end-to-end from discovery to launch. My work spans AI interaction design, internal tools, and consumer experiences, with a strong focus on retention, usability, and UX-led product decisions.",

@@ -1,0 +1,231 @@
+/* =====================================================
+   TYPOGRAPHY CUSTOMIZATION
+   =====================================================
+   Edit the CSS variables below to customize all text styling
+   Changes apply immediately when you save and refresh!
+   ===================================================== */
+
+:root {
+    /* ==================
+     FONTS
+     ================== */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+
+    /* ==================
+     HEADER SECTION
+     ================== */
+    /* Your Name */
+    --header-name-size: 16px;
+    --header-name-weight: 600;
+    /* 600 = bold */
+    --header-name-color: #1a1a1a;
+
+    /* Bio Text */
+    --header-bio-size: 12px;
+    --header-bio-weight: 300;
+    /* 300 = light, 400 = normal */
+    --header-bio-color: #1a1a1a;
+    --header-bio-max-width: 500px;
+
+    /* Navigation Links */
+    --nav-link-size: 16px;
+    --nav-link-weight: 400;
+    --nav-link-color: #1a1a1a;
+
+    /* ==================
+     PROJECT CARDS (Home Page)
+     ================== */
+    --project-title-size: 18px;
+    --project-title-weight: 500;
+    --project-title-color: #1a1a1a;
+
+    --project-description-size: 14px;
+    --project-description-weight: 400;
+    --project-description-color: #666666;
+
+    --project-tag-size: 11px;
+    --project-tag-weight: 500;
+
+    /* ==================
+     ABOUT PAGE
+     ================== */
+    --about-name-size: 16px;
+    --about-name-weight: 400;
+
+    --about-bio-size: 14px;
+    --about-bio-weight: 400;
+
+    --contact-link-size: 14px;
+
+    --section-title-size: 14px;
+    --section-title-weight: 400;
+
+    --item-title-size: 14px;
+    --item-title-weight: 400;
+
+    --item-meta-size: 12px;
+    --item-meta-weight: 400;
+
+    --item-details-size: 12px;
+
+    /* ==================
+     PROJECT DETAIL PAGE
+     ================== */
+    --project-detail-title-size: 36px;
+    --project-detail-title-weight: 500;
+
+    --project-detail-meta-size: 14px;
+    --project-detail-meta-weight: 400;
+
+    --project-detail-body-size: 16px;
+    --project-detail-body-weight: 400;
+
+    /* ==================
+     LINE HEIGHTS
+     ================== */
+    --line-height-tight: 1.3;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+
+    /* ==================
+     COLORS
+     ================== */
+    /* Light Theme */
+    --color-bg-light: #ffffff;
+    --color-text-light-primary: #1a1a1a;
+    --color-text-light-secondary: #666666;
+
+    /* Dark Theme (About Page) */
+    --color-bg-dark: #000000;
+    --color-text-dark-primary: #ffffff;
+    --color-text-dark-secondary: #cccccc;
+    --color-text-dark-muted: #999999;
+}
+
+/* =====================================================
+   APPLY TYPOGRAPHY VARIABLES
+   ===================================================== */
+
+/* Global Font */
+body {
+    font-family: var(--font-primary);
+}
+
+/* Header */
+.site-title {
+    font-size: var(--header-name-size) !important;
+    font-weight: var(--header-name-weight) !important;
+    line-height: var(--line-height-tight) !important;
+    color: var(--header-name-color);
+}
+
+.header-bio {
+    font-size: var(--header-bio-size) !important;
+    font-weight: var(--header-bio-weight) !important;
+    line-height: var(--line-height-normal) !important;
+    max-width: var(--header-bio-max-width) !important;
+    color: var(--header-bio-color);
+}
+
+.nav-link {
+    font-size: var(--nav-link-size) !important;
+    font-weight: var(--nav-link-weight) !important;
+    color: var(--nav-link-color);
+}
+
+/* Project Cards */
+.project-title {
+    font-size: var(--project-title-size) !important;
+    font-weight: var(--project-title-weight) !important;
+    line-height: var(--line-height-tight) !important;
+    color: var(--project-title-color);
+}
+
+.project-description {
+    font-size: var(--project-description-size) !important;
+    font-weight: var(--project-description-weight) !important;
+    line-height: var(--line-height-normal) !important;
+    color: var(--project-description-color) !important;
+}
+
+.tag {
+    font-size: var(--project-tag-size) !important;
+    font-weight: var(--project-tag-weight) !important;
+}
+
+/* About Page */
+.about-name {
+    font-size: var(--about-name-size) !important;
+    font-weight: var(--about-name-weight) !important;
+}
+
+.bio-text {
+    font-size: var(--about-bio-size) !important;
+    font-weight: var(--about-bio-weight) !important;
+    line-height: var(--line-height-relaxed) !important;
+}
+
+.contact-link {
+    font-size: var(--contact-link-size) !important;
+}
+
+.section-title {
+    font-size: var(--section-title-size) !important;
+    font-weight: var(--section-title-weight) !important;
+    line-height: var(--line-height-tight) !important;
+}
+
+.item-title {
+    font-size: var(--item-title-size) !important;
+    font-weight: var(--item-title-weight) !important;
+}
+
+.item-meta {
+    font-size: var(--item-meta-size) !important;
+    font-weight: var(--item-meta-weight) !important;
+    line-height: var(--line-height-normal) !important;
+}
+
+.achievements-list li,
+.skills-list li {
+    font-size: var(--item-details-size) !important;
+    line-height: var(--line-height-normal) !important;
+}
+
+/* Project Detail Page */
+.project-detail-title {
+    font-size: var(--project-detail-title-size) !important;
+    font-weight: var(--project-detail-title-weight) !important;
+}
+
+.project-meta {
+    font-size: var(--project-detail-meta-size) !important;
+    font-weight: var(--project-detail-meta-weight) !important;
+}
+
+.project-detail-description {
+    font-size: var(--project-detail-body-size) !important;
+    font-weight: var(--project-detail-body-weight) !important;
+    line-height: var(--line-height-relaxed) !important;
+}
+
+/* Dark Theme Color Overrides */
+.about-page .site-title {
+    color: var(--color-text-dark-primary);
+}
+
+.about-page .nav-link {
+    color: var(--color-text-dark-primary);
+}
+
+.about-page .item-meta,
+.about-page .achievements-list li,
+.about-page .skills-list li {
+    color: var(--color-text-dark-muted) !important;
+}

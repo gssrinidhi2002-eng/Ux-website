@@ -31,12 +31,12 @@
   --line-height: 1.6;
 
   /* Spacing */
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 32px;
-  --spacing-lg: 48px;
-  --spacing-xl: 64px;
-  --spacing-xxl: 96px;
+  --spacing-xs: 8px;   /* Tiny gaps: tags and very tight spacing */
+  --spacing-sm: 16px;  /* Small gaps: paragraph and small element spacing */
+  --spacing-md: 15px;  /* Medium gaps: header/main top spacing and section gaps */
+  --spacing-lg: 48px;  /* Large gaps: default main-content spacing */
+  --spacing-xl: 64px;  /* Extra-large gaps: project grid spacing */
+  --spacing-xxl: 96px; /* Largest gaps: loading/error block padding */
 
   /* Layout */
   --max-width: 1400px;
@@ -168,6 +168,11 @@ p {
   width: 100%;
 }
 
+/* Home page: tighten gap between header bio and project grid */
+.home-page .main-content {
+  padding-top: var(--spacing-md);
+}
+
 /* ==================
    PROJECT GRID (Home Page)
    ================== */
@@ -176,6 +181,10 @@ p {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-xl);
   margin-top: var(--spacing-lg);
+}
+
+.home-page .projects-grid {
+  margin-top: var(--spacing-md);
 }
 
 .project-card {

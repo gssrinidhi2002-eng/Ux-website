@@ -31,12 +31,18 @@
   --line-height: 1.6;
 
   /* Spacing */
-  --spacing-xs: 8px;   /* Tiny gaps: tags and very tight spacing */
-  --spacing-sm: 16px;  /* Small gaps: paragraph and small element spacing */
-  --spacing-md: 15px;  /* Medium gaps: header/main top spacing and section gaps */
-  --spacing-lg: 48px;  /* Large gaps: default main-content spacing */
-  --spacing-xl: 64px;  /* Extra-large gaps: project grid spacing */
-  --spacing-xxl: 96px; /* Largest gaps: loading/error block padding */
+  --spacing-xs: 8px;
+  /* Tiny gaps: tags and very tight spacing */
+  --spacing-sm: 16px;
+  /* Small gaps: paragraph and small element spacing */
+  --spacing-md: 16px;
+  /* Medium gaps: header/main top spacing and section gaps */
+  --spacing-lg: 48px;
+  /* Large gaps: default main-content spacing */
+  --spacing-xl: 36px;
+  /* Extra-large gaps: project grid spacing */
+  --spacing-xxl: 96px;
+  /* Largest gaps: loading/error block padding */
 
   /* Layout */
   --max-width: 1400px;

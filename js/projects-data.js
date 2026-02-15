@@ -67,79 +67,77 @@ const projectsData = [
     },
 
     {
-        id: "ai-game-onboarding",
-        title: "AI-Native Game FTUE",
-        description: "Modular onboarding system reducing early AI complexity by 17%",
-        tags: ["GAME DESIGN", "AI/ML", "TERRA"],
-        thumbnail: "images/projects/project2.jpg",
+        id: "cosmos-speculative",
+        title: "COSMOS",
+        description: "Your Gateway to Galactic Living",
+        tags: ["Immersive", "Speculative Design", "Future of Living"],
+        thumbnail: "images/projects/cosmos/cosmos_thumbnail.png",
         year: "2024",
-        role: "UX Designer & Product Owner",
-        collaborators: "Game Development Team",
-        details: "Designed and implemented a modular onboarding system for AI-native games that reduced early AI complexity by 17%. The system achieved 17% Day-1 retention and 12% overall app retention at launch through carefully crafted FTUE flows, progressive disclosure of AI features, and behavioral guardrails.",
+        role: "3D Modeling & Rendering · UX/UI Design · Branding",
+        //collaborators: "Game Development Team",
+        details: "Your gateway to immerse in a space megastructure look around and experience the humanity’s potential in the coming hundreds of years. Live the crazy ideas of science books and sci-fi movies just the way you want there is no stopping from now on with cosmos where collective creativity is a dream.",
         images: [
-            "images/projects/project2.jpg",
-            "images/projects/project2-detail1.jpg"
+            "images/projects/cosmos/COSMOS.png",
         ]
     },
 
     {
-        id: "enterprise-design-system",
-        title: "Enterprise Design System",
-        description: "Scalable design system for financial services platform",
-        tags: ["DESIGN SYSTEMS", "ENTERPRISE", "SG"],
-        thumbnail: "images/projects/project3.jpg",
-        year: "2024",
-        role: "UX Design Intern",
-        collaborators: "Société Générale GSC Team",
-        details: "Contributed to a scalable design system for an enterprise financial services platform with three integrated modules. Standardized design frameworks and visual systems to ensure consistency, accessibility, and maintainability across the product ecosystem.",
+        id: "Wander-app",
+        title: "Wander",
+        description: "Designing for slow travel, mindful discovery, and personal storytelling",
+        tags: ["DESIGN SYSTEMS", "App design", "Travel"],
+        thumbnail: "images/projects/Wander/wander thumbnail.png",
+        year: "2022",
+        role: "UX UI Designer",
+        //collaborators: "Société Générale GSC Team",
+        details: "Wander explores how digital travel experiences can move beyond efficiency and recommendations to support reflection, curiosity, and personal narrative. The project combines visual storytelling, interface design, and experiential flow to create a travel companion that encourages users to slow down, notice their surroundings, and engage meaningfully with places. Through mood-driven visuals, intuitive navigation, and content pacing, Wander prioritizes feeling over optimization. The design reframes travel as a personal journey shaped by memory, atmosphere, and discovery—challenging conventional travel apps that prioritize speed, volume, and utility over experience.",
         images: [
-            "images/projects/project3.jpg",
-            "images/projects/project3-detail1.jpg"
+            "images/projects/Wander/Wander.png"
         ]
     },
 
     {
-        id: "career-platform",
-        title: "Career Growth Platform",
-        description: "User-centered platform achieving 15% retention increase and 7% CTR improvement",
-        tags: ["WEB DESIGN", "REMAPPED"],
-        thumbnail: "images/projects/project4.jpg",
-        year: "2024",
-        role: "UX Design Intern",
-        collaborators: "Remapped Team",
-        details: "Developed user-centered, scalable interfaces for a career-focused platform that enhanced engagement and accessibility. Applied UX strategies to support diverse user needs, achieving a 15% increase in retention, 7% overall CTR improvement, and 9% increase in engagement time.",
-        images: [
-            "images/projects/project4.jpg"
-        ]
-    },
-
-    {
-        id: "unity-design-systems",
-        title: "Unity Design Systems",
-        description: "Figma-to-Unity design system reducing UI build cycles by 67%",
-        tags: ["DESIGN SYSTEMS", "GAME DESIGN", "TERRA"],
-        thumbnail: "images/projects/project5.jpg",
-        year: "2024",
-        role: "UX Designer",
-        collaborators: "8 Game Teams at Terra",
-        details: "Standardized Figma design systems aligned with Unity implementation constraints, improving designer–developer handoff and reducing UI build cycles by approximately 67% (≈1 week saved per iteration) across 8 teams. Created comprehensive component libraries and documentation.",
-        images: [
-            "images/projects/project5.jpg"
-        ]
-    },
-
-    {
-        id: "footwear-collection",
-        title: "Footwear Collection Design",
-        description: "Production-ready prototypes for Bata India's footwear collection",
-        tags: ["PRODUCT DESIGN", "BATA"],
-        thumbnail: "images/projects/project6.jpg",
+        id: "yono-ui",
+        title: "YONO Redesign",
+        description: "Reimagining digital banking for clarity, trust, and everyday usability",
+        tags: ["UX Redesign", "Financial Systems", "Accessibility"],
+        thumbnail: "images/projects/YONO/yono Thumbnail.png",
         year: "2021",
-        role: "Technical Product Design Intern",
-        collaborators: "Bata India Design & Production Teams",
-        details: "Translated 8+ design concepts into production-ready prototypes aligned with manufacturing requirements. Collaborated on 12+ fit-focused patterns and created technical drawings and specifications, conducting market trend research and developing 5+ digital prototypes using CAD tools.",
+        role: "UX UI",
+        //collaborators: "Remapped Team",
+        details: "I worked on analyzing usability gaps in the existing experience, restructuring key flows, and designing interface screens to improve clarity and accessibility. My contributions included wireframing, visual design, and supporting the development of a cohesive design system across core user journeys",
         images: [
-            "images/projects/project6.jpg"
+            "images/projects/YONO/Yono.png"
+        ]
+    },
+
+    {
+        id: "The-dilemma",
+        title: "The Dilemma",
+        description: "Visual Language of Fear",
+        tags: ["DESIGN SYSTEMS", "GAME DESIGN", "TERRA"],
+        thumbnail: "images/projects/Dilemma/Dilemma_thumbnail.png",
+        year: "2024",
+        role: "Visual Researcher & Director",
+        //collaborators: "8 Game Teams at Terra",
+        details: "The idea is to merge my story as an artist in design school and my newfound knowledge about mise en scene. The dilemma I usually face too much to exaggeration. To understand the psychology of the artist and what one can be inspired by and how those inspirations might necessarily affect the artist’s mental health. How is it so normal yet not so normal and how it is changes with time? More passage of time, the crazier the situation gets. Is it a dilemma for everyone or only a few go through?",
+        images: [
+            "images/projects/Dilemma/Dilemma.png"
+        ]
+    },
+
+    {
+        id: "social-enterprise",
+        title: "Krishi",
+        description: "A complex, “wicked” systems problem where agriculture, education, ecology, and social values intersect—resisting linear or purely technical solutions.",
+        tags: ["Systems Thinking", "Social Impact", "Experiential Learning"],
+        thumbnail: "images/projects/Krishi/krishi_thumbnail.png",
+        year: "2021",
+        role: "Systems Design & Research Lead",
+        //collaborators: "Bata India Design & Production Teams",
+        details: "Agriculture is a complex, “wicked” systems problem where ecological processes, education, community knowledge, and social values are deeply interconnected. Traditional, top-down or purely technical approaches fail to address these interdependencies, leaving critical gaps in how sustainability, equity, and food systems are understood and taught. Addressing this challenge requires participatory, experiential learning models that acknowledge multiple perspectives and work with nature rather than against it.",
+        images: [
+            "images/projects/Krishi/krishi.png"
         ]
     }
 

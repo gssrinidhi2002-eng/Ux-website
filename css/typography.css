@@ -31,7 +31,7 @@
     --header-bio-weight: 300;
     /* 300 = light, 400 = normal */
     --header-bio-color: #1a1a1a;
-    --header-bio-max-width: 500px;
+    --header-bio-max-width: 600px;
 
     /* Navigation Links */
     --nav-link-size: 16px;

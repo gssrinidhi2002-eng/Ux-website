@@ -78,7 +78,7 @@ function initAboutPage() {
     <a href="mailto:${data.email}" class="contact-link">Email</a>
     ${data.linkedin ? `<a href="${data.linkedin}" target="_blank" class="contact-link">LinkedIn</a>` : ''}
     ${data.behance ? `<a href="${data.behance}" target="_blank" class="contact-link">Behance</a>` : ''}
-    ${data.phone ? `<a href="tel:${data.phone}" class="contact-link">Phone</a>` : ''}
+    ${data.resume ? `<a href="${data.resume}" download class="contact-link">Resume</a>` : ''}
   `;
 
   // Generate experience section

@@ -32,26 +32,43 @@ function initHomePage() {
   // Clear loading text
   projectsGrid.innerHTML = '';
 
-  websiteData.projects.forEach(project => {
+  // Use projectsData if available, fallback to websiteData.projects
+  const projects = typeof projectsData !== 'undefined' ? projectsData : (websiteData.projects || []);
+
+  projects.forEach(project => {
     const projectCard = createProjectCard(project);
     projectsGrid.appendChild(projectCard);
   });
 }
 
 function createProjectCard(project) {
+  // Defensive: ensure project has required ID
+  if (!project || !project.id) {
+    console.warn('Project missing required id field:', project);
+    return document.createElement('div'); // Return empty div
+  }
+
   const card = document.createElement('a');
   card.href = `project.html?id=${project.id}`;
   card.className = 'project-card';
 
+  // Defensive: use defaults for missing fields
+  const title = project.title || 'Untitled Project';
+  const description = project.description || '';
+  const thumbnail = project.thumbnail || 'https://via.placeholder.com/800x600/f5f5f5/666666?text=' + encodeURIComponent(title);
+  const tags = project.tags || [];
+
   card.innerHTML = `
-    <img src="${project.thumbnail}" alt="${project.title}" class="project-thumbnail" 
-         onerror="this.src='https://via.placeholder.com/800x600/f5f5f5/666666?text=${encodeURIComponent(project.title)}'">
+    <img src="${thumbnail}" alt="${title}" class="project-thumbnail" 
+         onerror="this.src='https://via.placeholder.com/800x600/f5f5f5/666666?text=${encodeURIComponent(title)}'">
     <div class="project-info">
-      <h3 class="project-title">${project.title}</h3>
-      <p class="project-description">${project.description}</p>
-      <div class="project-tags">
-        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-      </div>
+      <h3 class="project-title">${title}</h3>
+      ${description ? `<p class="project-description">${description}</p>` : ''}
+      ${tags.length > 0 ? `
+        <div class="project-tags">
+          ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+      ` : ''}
     </div>
   `;
 
@@ -148,45 +165,63 @@ function initProjectPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const projectId = urlParams.get('id');
 
+  // Use projectsData if available, fallback to websiteData.projects
+  const projects = typeof projectsData !== 'undefined' ? projectsData : (websiteData.projects || []);
+
   // Find the project
-  const project = websiteData.projects.find(p => p.id === projectId);
+  const project = projects.find(p => p && p.id === projectId);
 
   if (!project) {
-    document.getElementById('project-container').innerHTML = '<p class="error">Project not found</p>';
+    document.getElementById('project-container').innerHTML = `
+      <p class="error">Project not found. <a href="index.html">Return to homepage</a></p>
+    `;
     return;
   }
 
+  // Defensive: use defaults for missing fields
+  const title = project.title || 'Untitled Project';
+  const year = project.year || '—';
+  const role = project.role || '—';
+  const collaborators = project.collaborators || '—';
+  const details = project.details || '';
+  const tags = project.tags || [];
+  const images = project.images || [];
+
   // Update page title
-  document.title = `${project.title} - ${websiteData.personal.name}`;
+  document.title = `${title} - ${websiteData.personal.name}`;
 
-  // Populate project details
-  document.getElementById('project-title').textContent = project.title;
-  document.getElementById('project-year').textContent = project.year;
-  document.getElementById('project-role').textContent = project.role;
-  document.getElementById('project-collaborators').textContent = project.collaborators;
-  document.getElementById('project-description').textContent = project.details;
+  // Update project details
+  document.getElementById('project-title').textContent = title;
+  document.getElementById('project-year').textContent = year;
+  document.getElementById('project-role').textContent = role;
+  document.getElementById('project-collaborators').textContent = collaborators;
 
-  // Add tags
+  // Only show description if it exists
+  const descElement = document.getElementById('project-description');
+  if (details) {
+    descElement.textContent = details;
+  } else {
+    descElement.style.display = 'none';
+  }
+
+  // Hide tags on project detail page (tags only show on home page cards)
   const tagsContainer = document.getElementById('project-tags');
-  project.tags.forEach(tag => {
-    const tagSpan = document.createElement('span');
-    tagSpan.className = 'tag';
-    tagSpan.textContent = tag;
-    tagsContainer.appendChild(tagSpan);
-  });
+  if (tagsContainer) {
+    tagsContainer.style.display = 'none';
+  }
 
-  // Add images
+  // Add images if they exist
   const imagesContainer = document.getElementById('project-images');
-  project.images.forEach((imagePath, index) => {
-    const img = document.createElement('img');
-    img.src = imagePath;
-    img.alt = `${project.title} - Image ${index + 1}`;
-    img.className = 'project-image';
-    img.onerror = function () {
-      this.src = `https://via.placeholder.com/1000x750/f5f5f5/666666?text=${encodeURIComponent(project.title + ' - Image ' + (index + 1))}`;
-    };
-    imagesContainer.appendChild(img);
-  });
+  if (images.length > 0) {
+    imagesContainer.innerHTML = images.map(img => `
+      <img src="${img}" 
+           alt="${title}" 
+           class="project-image"
+           onerror="this.style.display='none'">
+    `).join('');
+  } else {
+    imagesContainer.style.display = 'none';
+  }
 }
 
 // ==================

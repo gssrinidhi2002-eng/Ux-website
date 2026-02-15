@@ -28,30 +28,36 @@
     <main class="main-content">
         <div class="project-detail">
 
-            <!-- Project Header -->
-            <div class="project-header">
-                <h1 id="project-title" class="project-detail-title">Loading...</h1>
+            <!-- Hidden tags element (needed for JS but not displayed) -->
+            <div id="project-tags" style="display: none;"></div>
 
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-label">Year</span>
-                        <span id="project-year">—</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Role</span>
-                        <span id="project-role">—</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Collaborators</span>
-                        <span id="project-collaborators">—</span>
-                    </div>
+            <!-- Project Title -->
+            <h1 id="project-title" class="project-detail-title">Loading...</h1>
+
+            <!-- Two Column Layout -->
+            <div class="project-content-wrapper">
+                <!-- Left Column: Description -->
+                <div class="project-left-column">
+                    <p id="project-description" class="project-detail-description">Loading...</p>
                 </div>
 
-                <div id="project-tags" class="project-tags" style="margin-top: 16px;">
-                    <!-- Tags will be dynamically loaded -->
+                <!-- Right Column: Metadata -->
+                <div class="project-right-column">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Collaborators:</span>
+                            <span id="project-collaborators">—</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Role:</span>
+                            <span id="project-role">—</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span id="project-year">—</span>
+                        </div>
+                    </div>
                 </div>
-
-                <p id="project-description" class="project-detail-description">Loading...</p>
             </div>
 
             <!-- Project Images -->
@@ -64,6 +70,7 @@
 
     <!-- Scripts -->
     <script src="js/data.js"></script>
+    <script src="js/projects-data.js"></script>
     <script src="js/main.js"></script>
 
 </body>

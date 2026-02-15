@@ -164,7 +164,7 @@ p {
 .main-content {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--spacing-lg) var(--content-padding);
+  padding: var(--spacing-sm) var(--content-padding);
   width: 100%;
 }
 

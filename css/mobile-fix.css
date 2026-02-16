@@ -1,0 +1,149 @@
+/* =====================================================
+   CRITICAL MOBILE OVERRIDE - MUST BE LAST IN FILE
+   Forces header to stack vertically on mobile
+   ===================================================== */
+@media (max-width: 768px) {
+
+    /* KILL THE GRID - Force flex layout */
+    html .site-header,
+    body .site-header,
+    .site-header {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+
+        /* Remove all centering */
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 20px !important;
+
+        /* Force left alignment */
+        text-align: left !important;
+    }
+
+    /* Header left section */
+    html .header-left,
+    body .header-left,
+    .header-left {
+        width: 100% !important;
+        max-width: none !important;
+        grid-column: auto !important;
+        margin: 0 !important;
+        margin-bottom: 8px !important;
+        padding: 0 !important;
+        text-align: left !important;
+
+        /* Reset any float or position */
+        position: static !important;
+        float: none !important;
+    }
+
+    /* Header bio - Remove width constraint */
+    html .header-bio,
+    body .header-bio,
+    .header-bio {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    /* Header right section - FORCE BELOW */
+    html .header-right,
+    body .header-right,
+    .header-right {
+        width: 100% !important;
+        max-width: none !important;
+        grid-column: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+
+        /* Reset grid/positioning */
+        position: static !important;
+        float: none !important;
+        justify-self: flex-start !important;
+        align-self: flex-start !important;
+
+        /* Ensure flex layout */
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+
+    /* About page specific overrides */
+    html .about-page .site-header,
+    body .about-page .site-header,
+    .about-page .site-header {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+    }
+
+    html .about-page .header-left,
+    body .about-page .header-left,
+    .about-page .header-left {
+        grid-column: auto !important;
+        width: 100% !important;
+    }
+
+    html .about-page .header-right,
+    body .about-page .header-right,
+    .about-page .header-right {
+        grid-column: auto !important;
+        width: 100% !important;
+    }
+
+    /* MAIN CONTENT - Remove all width constraints */
+    html .main-content,
+    body .main-content,
+    .main-content {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        text-align: left !important;
+    }
+
+    /* ALL TEXT ELEMENTS - Force left align */
+    html body,
+    body,
+    html p,
+    body p,
+    p,
+    html h1,
+    body h1,
+    h1,
+    html h2,
+    body h2,
+    h2,
+    html h3,
+    body h3,
+    h3,
+    html h4,
+    body h4,
+    h4 {
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Container resets */
+    html .about-container,
+    body .about-container,
+    .about-container,
+    html .project-detail,
+    body .project-detail,
+    .project-detail {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+    }
+}

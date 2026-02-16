@@ -23,12 +23,12 @@ const websiteData = {
         // Contact & links
         email: "gssrinidhi2002@gmail.com",
         phone: "+91 94422 33012",
-        portfolio: "#",
-        linkedin: "https://www.linkedin.com/in/gssrinidhi/",
-        behance: "https://www.behance.net/gssrinidhi",
+        portfolio: "https://www.srinidhigs.com/#works",
+        linkedin: "https://www.linkedin.com/in/srinidhi-gs-47a348200/",
+        behance: "https://www.behance.net/srinidhig",
 
         // Resume PDF (place file in /public or /assets)
-        resume: "assets/Srinidhi_GS_Resume.pdf",
+        resume: "images/SRINIDHIGS_RESUME-PD.pdf",
 
         // Profile image
         profileImage: "images/profile.jpg"

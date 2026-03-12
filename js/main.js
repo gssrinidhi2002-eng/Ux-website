@@ -60,6 +60,7 @@ function createProjectCard(project) {
 
   card.innerHTML = `
     <img src="${thumbnail}" alt="${title}" class="project-thumbnail" 
+         loading="lazy"
          onerror="this.src='https://via.placeholder.com/800x600/f5f5f5/666666?text=${encodeURIComponent(title)}'">
     <div class="project-info">
       <h3 class="project-title">${title}</h3>

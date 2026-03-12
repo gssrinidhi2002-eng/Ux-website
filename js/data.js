@@ -28,7 +28,7 @@ const websiteData = {
         behance: "https://www.behance.net/srinidhig",
 
         // Resume PDF (place file in /public or /assets)
-        resume: "images/SRINIDHIGS_RESUME-PD.pdf",
+        resume: "images/Srinidhigs.pdf",
 
         // Profile image
         profileImage: "images/profile.jpg"

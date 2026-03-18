@@ -85,6 +85,20 @@ const projectsData = [
             "images/projects/PharmEasy/PE8.png",
         ]
     },
+    {
+        id: "MMT-ui",
+        title: "Solving the Chaos of Group Travel Planning",
+        description: "Uncovering collaboration gaps and fragmented workflows in itinerary creation",
+        tags: ["Growth Design", "Consumer Behavior", "Travel Tech"],
+        thumbnail: "images/projects/MMT/MMT Thumbnail.png",
+        year: "2026",
+        role: "R&R / Product Strategy",
+        //collaborators: "Remapped Team",
+        details: "This case study identifies why group travelers struggle to plan trips—highlighting collaboration challenges, scattered tools, and decision complexity—and validates the problem through user research and market trends to uncover a strong opportunity for a unified planning solution.",
+        images: [
+            "images/projects/MMT/MMt 1.png"
+        ]
+    },
 
     {
         id: "The-Paradox-of-Choice",

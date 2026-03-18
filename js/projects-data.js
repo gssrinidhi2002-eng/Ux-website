@@ -67,17 +67,22 @@ const projectsData = [
     },
 
     {
-        id: "cosmos-speculative",
-        title: "COSMOS",
-        description: "Your Gateway to Galactic Living",
-        tags: [ "Speculative Design", "Futurism"],
-        thumbnail: "images/projects/cosmos/cosmos_thumbnail.png",
-        year: "2024",
-        role: "3D Modeling & Rendering · UX/UI Design · Branding",
+        id: "PharmEasy",
+        title: "Employee Benefits Platform",
+        description: "Corporate Healthcare Benefits Platform for PharmEasy",
+        tags: ["Enterprise Design", "B2B"],
+        thumbnail: "images/projects/PharmEasy/Pharmeasy-Thumbnail.png",
+        year: "2025",
+        role: "Product Thinking · UX/UI Design · Branding",
         //collaborators: "Game Development Team",
-        details: "Your gateway to immerse in a space megastructure look around and experience the humanity’s potential in the coming hundreds of years. Live the crazy ideas of science books and sci-fi movies just the way you want there is no stopping from now on with cosmos where collective creativity is a dream.",
+        details: "Simplifies employee healthcare by centralizing bookings, benefit tracking, and discovery into one intuitive experience.",
         images: [
-            "images/projects/cosmos/COSMOS.png",
+            "images/projects/PharmEasy/PE 1.png",
+            "images/projects/PharmEasy/PE 3.png",
+            "images/projects/PharmEasy/PE 4.png",
+            "images/projects/PharmEasy/PE 6.png",
+            "images/projects/PharmEasy/PE7.png",
+            "images/projects/PharmEasy/PE8.png",
         ]
     },
 
@@ -111,6 +116,23 @@ const projectsData = [
             "images/projects/Aurora/aurora.png"
         ]
     },
+
+
+    {
+        id: "cosmos-speculative",
+        title: "COSMOS",
+        description: "Your Gateway to Galactic Living",
+        tags: ["Speculative Design", "Futurism"],
+        thumbnail: "images/projects/cosmos/cosmos_thumbnail.png",
+        year: "2024",
+        role: "3D Modeling & Rendering · UX/UI Design · Branding",
+        //collaborators: "Game Development Team",
+        details: "Your gateway to immerse in a space megastructure look around and experience the humanity’s potential in the coming hundreds of years. Live the crazy ideas of science books and sci-fi movies just the way you want there is no stopping from now on with cosmos where collective creativity is a dream.",
+        images: [
+            "images/projects/cosmos/COSMOS.png",
+        ]
+    },
+
 
     {
         id: "Pukar-game",
@@ -203,7 +225,7 @@ const projectsData = [
             "images/projects/Krishi/krishi.png"
         ]
 
-    }
+    }s
 
     /* =====================================================
        💡 MINIMAL EXAMPLE - Only required field

@@ -75,7 +75,7 @@ const projectsData = [
         year: "2025",
         role: "Product Thinking · UX/UI Design · Branding",
         //collaborators: "Game Development Team",
-        details: "Simplifies employee healthcare by centralizing bookings, benefit tracking, and discovery into one intuitive experience.",
+        details: "A user-centered platform designed to simplify how employees access and manage healthcare benefits on PharmEasy. The solution streamlines bookings, centralizes benefit tracking, and improves discoverability through intuitive navigation and personalized experiences, making healthcare services more accessible, efficient, and easy to use for both employees and their families.",
         images: [
             "images/projects/PharmEasy/PE 1.png",
             "images/projects/PharmEasy/PE 3.png",

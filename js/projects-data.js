@@ -225,7 +225,7 @@ const projectsData = [
             "images/projects/Krishi/krishi.png"
         ]
 
-    }s
+    }
 
     /* =====================================================
        💡 MINIMAL EXAMPLE - Only required field

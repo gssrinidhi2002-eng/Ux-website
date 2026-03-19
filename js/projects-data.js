@@ -52,6 +52,26 @@ const projectsData = [
     // ==================
 
     {
+        id: "PharmEasy",
+        title: "Employee Benefits Platform",
+        description: "Corporate Healthcare Benefits Platform for PharmEasy",
+        tags: ["Enterprise Design", "B2B"],
+        thumbnail: "images/projects/PharmEasy/Pharmeasy-Thumbnail.png",
+        year: "2025",
+        role: "Product Thinking · UX/UI Design · Branding",
+        //collaborators: "Game Development Team",
+        details: "A user-centered platform designed to simplify how employees access and manage healthcare benefits on PharmEasy. The solution streamlines bookings, centralizes benefit tracking, and improves discoverability through intuitive navigation and personalized experiences, making healthcare services more accessible, efficient, and easy to use for both employees and their families.",
+        images: [
+            "images/projects/PharmEasy/PE 1.png",
+            "images/projects/PharmEasy/PE 2.png",
+            "images/projects/PharmEasy/PE 3.png",
+            "images/projects/PharmEasy/PE 4.png",
+            "images/projects/PharmEasy/PE 6.png",
+            "images/projects/PharmEasy/PE7.png",
+            "images/projects/PharmEasy/PE8.png",
+        ]
+    },
+    {
         id: "Zepto-ui",
         title: "Smartlist - Zepto",
         description: "From Intent to Checkout: Eliminating SKU-Hunting in High-Frequency Grocery Orders",
@@ -66,25 +86,7 @@ const projectsData = [
         ]
     },
 
-    {
-        id: "PharmEasy",
-        title: "Employee Benefits Platform",
-        description: "Corporate Healthcare Benefits Platform for PharmEasy",
-        tags: ["Enterprise Design", "B2B"],
-        thumbnail: "images/projects/PharmEasy/Pharmeasy-Thumbnail.png",
-        year: "2025",
-        role: "Product Thinking · UX/UI Design · Branding",
-        //collaborators: "Game Development Team",
-        details: "A user-centered platform designed to simplify how employees access and manage healthcare benefits on PharmEasy. The solution streamlines bookings, centralizes benefit tracking, and improves discoverability through intuitive navigation and personalized experiences, making healthcare services more accessible, efficient, and easy to use for both employees and their families.",
-        images: [
-            "images/projects/PharmEasy/PE 1.png",
-            "images/projects/PharmEasy/PE 3.png",
-            "images/projects/PharmEasy/PE 4.png",
-            "images/projects/PharmEasy/PE 6.png",
-            "images/projects/PharmEasy/PE7.png",
-            "images/projects/PharmEasy/PE8.png",
-        ]
-    },
+
     {
         id: "MMT-ui",
         title: "Solving the Chaos of Group Travel Planning",

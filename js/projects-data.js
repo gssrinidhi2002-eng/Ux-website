@@ -137,7 +137,7 @@ const projectsData = [
         title: "COSMOS",
         description: "Your Gateway to Galactic Living",
         tags: ["Speculative Design", "Futurism"],
-        thumbnail: "images/projects/cosmos/cosmos_thumbnail.png",
+        thumbnail: "images/projects/cosmos/thumbnail.gif",
         year: "2024",
         role: "3D Modeling & Rendering · UX/UI Design · Branding",
         //collaborators: "Game Development Team",

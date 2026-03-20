@@ -49,7 +49,7 @@ function createProjectCard(project) {
   }
 
   const card = document.createElement('a');
-  card.href = `project.html?id=${project.id}`;
+  card.href = project.directLink ? project.directLink : `project.html?id=${project.id}`;
   card.className = 'project-card';
 
   // Defensive: use defaults for missing fields

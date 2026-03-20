@@ -52,6 +52,17 @@ const projectsData = [
     // ==================
 
     {
+        id: "erp-logiflow",
+        title: "LogiFlow ERP",
+        description: "Logiflow Case Study BT Group",
+        tags: ["ERP", "UX Design", "Enterprise"],
+        thumbnail: "images/projects/ERP/Thumbnail ERP.png",
+        year: "2026",
+        role: "UX Strategy & Design",
+        directLink: "images/projects/ERP/Logiflow Case Study.html"
+    },
+
+    {
         id: "PharmEasy",
         title: "Employee Benefits Platform",
         description: "Corporate Healthcare Benefits Platform for PharmEasy",

@@ -54,7 +54,7 @@ const projectsData = [
     {
         id: "erp-logiflow",
         title: "LogiFlow ERP",
-        description: "Logiflow Case Study BT Group",
+        description: "Logiflow Case StudyThis is a self-initiated enterprise systems design project where I explored how fragmented logistics dispatch operations could be redesigned into a unified, role-aware platform.",
         tags: ["ERP", "UX Design", "Enterprise"],
         thumbnail: "images/projects/ERP/Thumbnail ERP.png",
         year: "2026",

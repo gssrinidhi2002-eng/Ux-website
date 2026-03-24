@@ -55,7 +55,7 @@ const projectsData = [
         id: "AI Analytics",
         title: "AI Analytics",
         description: "Every dataset has an answer. Not every answer deserves a decision.",
-        tags: ["ERP", "UX Design", "Enterprise"],
+        tags: ["systems design ", "UX Design", "HITL"],
         thumbnail: "images/projects/AI Analytics/UX Data GIF.gif",
         year: "2026",
         role: "UX Strategy & Design",

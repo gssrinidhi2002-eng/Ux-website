@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Case Study</title>
+    <meta name="description"
+        content="A detailed product case study covering problem framing, system design, UX architecture, and impact.">
+
+    <!-- Fonts -->
+    <!-- Using system fonts (Helvetica Neue) -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="case-study.css">
+</head>
+
+<body>
+    <main class="case-study-container">
+        <!-- Main Content -->
+        <article class="case-study">
+            <!-- Hero Section -->
+            <header class="hero section">
+                <div class="hero-meta">Product Designer + APM • Late 2025</div>
+                <h1 class="hero-title">Analytics AI Pipeline</h1>
+                <p class="hero-subtitle">Building a governed AI pipeline where every step is validated, every output is
+                    editable, and the AI can never silently be wrong.</p>
+            </header>
+
+            <!-- Context -->
+            <section class="section" id="context" style="padding-top: 2rem;">
+                <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                    <span class="section-label">Context</span>
+                    <h2 class="section-statement" style="margin: 0 auto;">A fast-moving team making slow decisions</h2>
+                </div>
+                <figure class="diagram-container"
+                    style="margin: 0; text-align: center; border-radius: 12px; overflow: hidden; background: transparent; border: none; padding: 0;">
+                    <img src="images/context-diagram.png" alt="Project Context"
+                        style="width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 12px; background: var(--surface-color);">
+                </figure>
+            </section>
+
+            <!-- Problem -->
+            <section class="section" id="problem">
+                <div class="section-header">
+                    <span class="section-label">The Translation Problem</span>
+                    <h2 class="section-statement">The problem wasn’t data. It was translation.</h2>
+                </div>
+
+                <figure class="diagram-container"
+                    style="margin-top: 0; margin-bottom: 3rem; text-align: center; border-radius: 12px; overflow: hidden; background: transparent; border: none; padding: 0;">
+                    <img src="images/translation-problem.png" alt="The Translation Problem Gap"
+                        style="width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 12px; background: var(--surface-color);">
+                </figure>
+
+                <div class="content-block">
+                    <p class="lead-text">Humans ask questions in outcomes ("Why are D7 numbers dropping?"). Analytics
+                        schemas answer in events (AppLaunch, filtered by ms timestamps). Between those two things sits a
+                        gap that looks small and is enormous.</p>
+                    <p>The team didn't need better analytics dashboards. They already had Mixpanel. What they didn't
+                        have was a reliable, governed path from intent to correct query. The translation was happening
+                        in one person's head—the analyst. And the analyst queue never cleared (averaging 4+ hours from
+                        question to validated answer).</p>
+                    <p>Worse, prior AI tools filled gaps silently. For example, a date range of 2015-2025 was returned
+                        when a user typed "today only". This is the most dangerous failure class: confident wrong output
+                        that only gets discovered after a decision has been made.</p>
+                </div>
+            </section>
+
+            <!-- Who is this for -->
+            <section class="section" id="who-is-this-for">
+                <div class="section-header">
+                    <span class="section-label">Who is this for</span>
+                    <h2 class="section-statement">People making decisions under uncertainty</h2>
+                </div>
+                <div class="content-block" style="margin-bottom: 2.5rem;">
+                    <p style="font-size: 1.125rem; color: var(--text-secondary); margin: 0;">Anyone with a question —
+                        trying to prove, validate, or challenge a call.</p>
+                </div>
+
+                <div class="decision-grid">
+                    <div class="decision-card">
+                        <div class="decision-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h4>Product Managers</h4>
+                        <p>Shipping decisions daily across multiple live games</p>
+                    </div>
+                    <div class="decision-card">
+                        <div class="decision-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                        <h4>Designers</h4>
+                        <p>Interpreting player behavior, not just designing screens</p>
+                    </div>
+                    <div class="decision-card">
+                        <div class="decision-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <h4>Analysts</h4>
+                        <p>Handling edge cases, not answering every basic question</p>
+                    </div>
+                    <div class="decision-card">
+                        <div class="decision-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h4>Founders & Decision-Makers</h4>
+                        <p>Validating bets, not waiting for perfect data</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reframing -->
+            <section class="section" id="reframing">
+                <div class="section-header">
+                    <span class="section-label">Reframing the Challenge</span>
+                    <h2 class="section-statement">The system wasn’t failing. It was working — incorrectly.</h2>
+                </div>
+
+                <div class="reframing-narrative">
+
+                    <div class="contrast-blocks" style="margin-top: 0;">
+                        <div class="contrast-box assumption">
+                            <span class="label">The brief said:</span>
+                            <p>Reduce analyst dependency — give teams a simpler Mixpanel interface.</p>
+                        </div>
+                        <div class="contrast-box reality">
+                            <span class="label">What we found:</span>
+                            <p>Every question had to cross a translation gap — from business intent to schema language.
+                                That gap lived in one person's head.</p>
+                        </div>
+                    </div>
+
+                    <div class="core-problem-banner">
+                        <span class="banner-label">The real problem:</span>
+                        <h4 style="font-weight: 500; font-size: 1.5rem; line-height: 1.4;">This was a decision-making
+                            infrastructure failure. Speed. Translation. Trust. All broken at once.</h4>
+                    </div>
+
+                    <div class="failure-section">
+                        <h4
+                            style="font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">
+                            Three simultaneous failures:</h4>
+                        <div class="failure-pillars">
+                            <div class="pillar">
+                                <h5
+                                    style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--text-tertiary);">
+                                    Speed</h5>
+                                <p style="font-weight: 500; color: var(--text-primary);">4h latency</p>
+                            </div>
+                            <div class="pillar">
+                                <h5
+                                    style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--text-tertiary);">
+                                    Translation</h5>
+                                <p style="font-weight: 500; color: var(--text-primary);">Intent &rarr; schema</p>
+                            </div>
+                            <div class="pillar">
+                                <h5
+                                    style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--text-tertiary);">
+                                    Trust</h5>
+                                <p style="font-weight: 500; color: var(--text-primary);">Unverifiable output</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Idea -->
+            <section class="section dd-section" id="the-idea">
+                <div class="section-header">
+                    <span class="section-label">The Idea (Ask → Understand → Act)</span>
+                    <h2 class="section-statement">From questions to decisions — without losing intent</h2>
+                </div>
+
+                <!-- DISCOVER -->
+                <div class="content-block" style="margin-bottom: 3rem;">
+                    <span class="phase-label">Discover Phase</span>
+                    <h3 class="opening-statement">The queue never cleared. Decisions didn't wait. Data did.</h3>
+
+                    <div class="discover-grid">
+                        <div class="discover-block">
+                            <h4>Inside the analyst queue</h4>
+                            <ul>
+                                <li>2 weeks of shadowing</li>
+                                <li>4+ hour delay from question to validated answer</li>
+                                <li>Teams moved forward before data arrived</li>
+                            </ul>
+                        </div>
+                        <div class="discover-block">
+                            <h4>PM & Designer interviews</h4>
+                            <ul>
+                                <li>Decisions made before data arrived</li>
+                                <li>Data used to justify, not decide</li>
+                                <li>Designers observed behavior they couldn't verify</li>
+                            </ul>
+                        </div>
+                        <div class="discover-block">
+                            <h4>Failure patterns</h4>
+                            <ul>
+                                <li>Not edge cases — recurring issues</li>
+                                <li>Required analyst intuition to detect</li>
+                                <li>Invisible to users asking the question</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="insight-block">
+                        <p style="margin-bottom: 2rem;">
+                            “Users don't know what they don't know. The system doesn't know what the user meant.”
+                        </p>
+                        <p>Every query is a reconciliation between two incomplete pictures.</p>
+                    </div>
+                </div>
+
+                <!-- DEFINE -->
+                <div class="content-block">
+                    <span class="phase-label">Define Phase</span>
+                    <h3 class="opening-statement">We weren't optimizing for speed.<br>We were protecting against being
+                        wrong.</h3>
+
+                    <div class="define-grid">
+                        <div class="constraint-card failure">
+                            <h5>Two non-negotiable constraints:</h5>
+                            <ul>
+                                <li>Any solution retaining analyst dependency <span class="tag fail">FAILED</span></li>
+                                <li>Any solution reducing trust via automation <span class="tag fail">FAILED</span></li>
+                            </ul>
+                        </div>
+                        <div class="constraint-card">
+                            <h5>This eliminated:</h5>
+                            <ul>
+                                <li>Faster dashboard <span class="tag">Dependency remains</span></li>
+                                <li>Chat interface <span class="tag">Invisible reasoning</span></li>
+                                <li>Fully automated AI <span class="tag">Trust collapses</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="final-framing">
+                        <span class="label">What remained:</span>
+                        <h3>A governed path from intent to validated answer</h3>
+                        <div class="points">
+                            <span>Self-serve</span>
+                            <span>Visible</span>
+                            <span>Correctable at every step</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Design -->
+            <section class="section" id="system-design">
+                <div class="section-header">
+                    <span class="section-label">System Architecture</span>
+                    <h2 class="section-statement">A pipeline where every step is visible, validated, and editable</h2>
+                </div>
+
+                <!-- 1. Five-layer architecture overview -->
+                <div class="arch-subsection" style="margin-top: 3rem;">
+                    <h3 class="arch-subsection-title">Five layers. Each one closes a specific translation failure.</h3>
+
+                    <div class="layers-grid">
+                        <div class="layer-card">
+                            <span class="layer-num">1</span>
+                            <h4 class="layer-title">Semantic Resolution</h4>
+                            <p class="layer-desc">Name &rarr; canonical identifier</p>
+                            <span class="layer-close">Closes: naming ambiguity across teams</span>
+                            <span class="layer-gate">Clarifier</span>
+                        </div>
+
+                        <div class="layer-card">
+                            <span class="layer-num">2</span>
+                            <h4 class="layer-title">Event Routing</h4>
+                            <p class="layer-desc">Intent &rarr; correct Mixpanel event</p>
+                            <span class="layer-close">Closes: wrong event = wrong data</span>
+                            <span class="layer-gate">Human Gate</span>
+                        </div>
+
+                        <div class="layer-card">
+                            <span class="layer-num">3</span>
+                            <h4 class="layer-title">Technical Query</h4>
+                            <p class="layer-desc">Plain-English intent spec</p>
+                            <span class="layer-close">Closes: misclassification before code</span>
+                            <span class="layer-gate">Human Gate</span>
+                        </div>
+
+                        <div class="layer-card">
+                            <span class="layer-num">4</span>
+                            <h4 class="layer-title">JQL Generation</h4>
+                            <p class="layer-desc">Commented, editable query</p>
+                            <span class="layer-close">Closes: approval without understanding</span>
+                            <span class="layer-gate">Human Gate</span>
+                        </div>
+
+                        <div class="layer-card">
+                            <span class="layer-num">5</span>
+                            <h4 class="layer-title">Python Analysis</h4>
+                            <p class="layer-desc">Computed + validated result</p>
+                            <span class="layer-close">Closes: silent computation errors</span>
+                            <span class="layer-gate">Human Gate</span>
+                        </div>
+                    </div>
+
+                    <div class="learning-bank">
+                        <span class="learning-bank-label">Governed Learning Bank</span>
+                        'Remember this' &rarr; email validation by analytics team + founder &rarr; Firestore &rarr;
+                        injected as hard requirement in future prompts
+                    </div>
+                </div>
+
+                <!-- 2. UX architecture -->
+                <div class="arch-subsection">
+                    <h3 class="arch-subsection-title">The system must be visible to be trustworthy.</h3>
+
+                    <div class="ux-grid">
+                        <div class="ux-timeline">
+                            <div class="ux-timeline-header">What the user sees</div>
+                            <div class="ux-timeline-content-wrap">
+                                <div class="ux-timeline-item">
+                                    <span class="ux-timeline-label" style="color: #10b981;">Input</span>
+                                    <div class="ux-timeline-content">
+                                        <h4>Natural language query</h4>
+                                        <p>Plain text input with no schema knowledge required</p>
+                                    </div>
+                                </div>
+                                <div class="ux-timeline-item">
+                                    <span class="ux-timeline-label" style="color: #3b82f6;">Stage 1</span>
+                                    <div class="ux-timeline-content">
+                                        <h4>Semantic + event resolution</h4>
+                                        <p>Named stage status. User validates event before code runs.</p>
+                                    </div>
+                                </div>
+                                <div class="ux-timeline-item">
+                                    <span class="ux-timeline-label" style="color: #8b5cf6;">Stage 2</span>
+                                    <div class="ux-timeline-content">
+                                        <h4>Technical Query gate</h4>
+                                        <p>Plain-English intent. User approves what system intends to do.</p>
+                                    </div>
+                                </div>
+                                <div class="ux-timeline-item">
+                                    <span class="ux-timeline-label" style="color: #f59e0b;">Stage 3</span>
+                                    <div class="ux-timeline-content">
+                                        <h4>JQL gate</h4>
+                                        <p>Editable query + inline comments. Every clause explained.</p>
+                                    </div>
+                                </div>
+                                <div class="ux-timeline-item">
+                                    <span class="ux-timeline-label" style="color: #10b981;">Stage 4</span>
+                                    <div class="ux-timeline-content">
+                                        <h4>Result gate</h4>
+                                        <p>Output as draft. Explicit prompt for correction.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ux-reasoning">
+                            <div class="ux-reason-card">
+                                <h4>Why the pipeline is visible from Stage 0</h4>
+                                <p>Chat hides reasoning. A PM under pressure approves anything that looks complete.
+                                    Making every stage named and visible sets the mental model upfront: you are watching
+                                    a structured process, not waiting for a black box.</p>
+                            </div>
+                            <div class="ux-reason-card">
+                                <h4>Why outputs are always drafts</h4>
+                                <p>Because AI is probabilistic, every output is positioned as a suggestion awaiting
+                                    human confirmation. The final gate always asks: 'Please provide feedback if you
+                                    require any changes.'</p>
+                            </div>
+                            <div class="ux-reason-card">
+                                <h4>Why edits are allowed at every gate</h4>
+                                <p>Approval without edit = blind trust. Edit without explanation = blind modification.
+                                    Both fail. Inline comments and editability must be designed together — neither works
+                                    without the other.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Information architecture -->
+                <div class="arch-subsection">
+                    <h3 class="arch-subsection-title">How a question transforms across five layers.</h3>
+
+                    <div class="ia-table">
+                        <div class="ia-row">
+                            <div class="ia-badge" style="color: #10b981;">L0</div>
+                            <div class="ia-source">
+                                <h4>User Intent</h4>
+                                <span>Natural language</span>
+                            </div>
+                            <div class="ia-output">
+                                <span class="plain-text">"Why is D7 dropping for net_cricket, organic India,
+                                    v129?"</span>
+                            </div>
+                        </div>
+
+                        <div class="ia-row">
+                            <div class="ia-badge" style="color: #3b82f6;">L1</div>
+                            <div class="ia-source">
+                                <h4>Semantic Resolution</h4>
+                                <span>Entities resolved</span>
+                            </div>
+                            <div class="ia-output">
+                                <span class="mono-style">"criticalstrikenetwork" (canonical) • "mp_country_code: IN" •
+                                    "AppVersion_on_install: 129"</span>
+                            </div>
+                        </div>
+
+                        <div class="ia-row">
+                            <div class="ia-badge" style="color: #8b5cf6;">L2</div>
+                            <div class="ia-source">
+                                <h4>Event Selection</h4>
+                                <span>Events confirmed</span>
+                            </div>
+                            <div class="ia-output">
+                                <span class="plain-text" style="font-style: normal;">AppLaunch (install date, D0) +
+                                    GameExited (multiplayer filter) — validated by user</span>
+                            </div>
+                        </div>
+
+                        <div class="ia-row">
+                            <div class="ia-badge" style="color: #f59e0b;">L3</div>
+                            <div class="ia-source">
+                                <h4>Technical Query</h4>
+                                <span>Intent in English</span>
+                            </div>
+                            <div class="ia-output">
+                                <span class="plain-text" style="font-style: normal;">Cohort: real users, v129,
+                                    India.<br>Metric: AppLaunch presence on D7.<br>Filter: multiplayer session on
+                                    D0/D1.</span>
+                            </div>
+                        </div>
+
+                        <div class="ia-row">
+                            <div class="ia-badge" style="color: #10b981;">L4</div>
+                            <div class="ia-source">
+                                <h4>JQL + Python</h4>
+                                <span>Executable code</span>
+                            </div>
+                            <div class="ia-output">
+                                <span class="mono-style">Events({from_date, to_date}).filter(isDebugMenuEnabled !==
+                                    'True'...).map({distinct_id, time, DaysSinceInstall})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <details class="full-pipeline-toggle"
+                    style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+                    <summary
+                        style="display: flex; justify-content: space-between; align-items: center; font-size: 1.125rem; font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none;">
+                        View Full Pipeline</summary>
+                    <figure class="diagram-container-scrollable"
+                        style="margin-top: 2rem; width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; overflow-x: auto; text-align: center;">
+                        <img src="images/workflow-detailed.png" alt="Detailed System Workflow"
+                            style="max-height: 800px; width: auto; object-fit: contain;">
+                    </figure>
+                </details>
+            </section>
+
+            <!-- Behavior Change -->
+            <section class="section" id="behavior-change">
+                <div class="section-header">
+                    <span class="section-label">System in Motion</span>
+                    <h2 class="section-statement">One query. Five stages. From intent to validated output.</h2>
+                </div>
+
+                <div class="content-block"
+                    style="margin-bottom: 3.5rem; padding: 1.5rem 2rem; background: var(--surface-color); border-left: 4px solid var(--text-primary); border-radius: 0 12px 12px 0;">
+                    <p
+                        style="font-size: 1.125rem; color: var(--text-primary); margin: 0; font-weight: 500; line-height: 1.5;">
+                        A PM asks a question in natural language. The system translates, validates, and executes it
+                        step-by-step &mdash; with every stage visible before results appear.
+                    </p>
+                </div>
+
+                <div class="system-stages">
+                    <!-- Stage 0 -->
+                    <div class="stage-block" style="margin-bottom: 4.5rem;">
+                        <h4
+                            style="font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                            Stage 0 &mdash; Before submission</h4>
+                        <figure class="diagram-container-scrollable"
+                            style="margin-bottom: 1.5rem; width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 0; overflow: hidden; text-align: center;">
+                            <img src="images/stage-0.png" alt="Stage 0"
+                                style="width: 100%; height: auto; display: block;">
+                        </figure>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0;"><em>Home state. Query
+                                typed. Full pipeline visible before execution.</em></p>
+                    </div>
+
+                    <!-- Stage 1 -->
+                    <div class="stage-block" style="margin-bottom: 4.5rem;">
+                        <h4
+                            style="font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                            Stage 1 &mdash; Understanding intent</h4>
+                        <figure class="diagram-container-scrollable"
+                            style="margin-bottom: 1.5rem; width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 0; overflow: hidden; text-align: center;">
+                            <img src="images/Group 1597881022.png" alt="Stage 1"
+                                style="width: 100%; height: auto; display: block;">
+                        </figure>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0;"><em>System interprets
+                                the question and determines relevant events &mdash; no query generated yet.</em></p>
+                    </div>
+
+
+                    <!-- Failure Case -->
+                    <div class="stage-block failure-case" style="margin-bottom: 4.5rem;">
+                        <h4 class="failure-title">What this system prevents</h4>
+                        <figure class="diagram-container-scrollable"
+                            style="margin-bottom: 1.5rem; width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 0; overflow: hidden; text-align: center;">
+                            <img src="/Users/srinidhigs/.gemini/antigravity/brain/0158ba99-4c73-4b87-86d2-ffa07b64bbdd/media__1774381784893.png"
+                                alt="Failure Case" style="width: 100%; height: auto; display: block;">
+                        </figure>
+                        <p class="failure-caption"><em>&ldquo;Today only&rdquo; resulted in a 2015&ndash;2025 range.
+                                Output looked valid, but was wrong. No error surfaced.</em></p>
+                        <p class="failure-takeaway">The system is designed to stop this before execution &mdash; not
+                            detect it after.</p>
+                    </div>
+
+                    <!-- Final State -->
+                    <div class="stage-block">
+                        <h4
+                            style="font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                            Final State &mdash; Output with validation</h4>
+                        <figure class="diagram-container-scrollable"
+                            style="margin-bottom: 1.5rem; width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 0; overflow: hidden; text-align: center;">
+                            <img src="/Users/srinidhigs/.gemini/antigravity/brain/0158ba99-4c73-4b87-86d2-ffa07b64bbdd/media__1774381759554.png"
+                                alt="Final Output Draft" style="width: 100%; height: auto; display: block;">
+                        </figure>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0;"><em>All stages complete.
+                                Output is shown as a draft with a final human validation step.</em></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UX Architecture -->
+            <section class="section" id="ux-architecture">
+                <div class="section-header">
+                    <span class="section-label">AI UX Principles</span>
+                    <h2 class="section-statement">Designing for AI that can be wrong — safely</h2>
+                </div>
+                <div class="content-block" style="margin-bottom: 4rem;">
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                        Three system-level choices that defined the architecture.</h3>
+                    <div class="decision-blocks" style="margin-top: 0;">
+                        <!-- S1 -->
+                        <div class="decision-block">
+                            <div class="decision-block-header">Pipeline over chat</div>
+                            <div class="decision-col">
+                                <span class="decision-label tension">Tension</span>
+                                <p>Chat hides reasoning. A PM can see an output without understanding how it was
+                                    produced &mdash; exactly the failure mode we were trying to eliminate.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label enforced">We enforced</span>
+                                <p>Step-based pipeline where every stage is named and visible. Each completed stage is a
+                                    trust deposit before the next gate.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label impact">Why it matters</span>
+                                <p>Because AI is probabilistic, the reasoning must be visible &mdash; not just the
+                                    output.</p>
+                            </div>
+                        </div>
+
+                        <!-- S2 -->
+                        <div class="decision-block">
+                            <div class="decision-block-header">HITL as backend constraint</div>
+                            <div class="decision-col">
+                                <span class="decision-label tension">Tension</span>
+                                <p>UI-level validation (modals, warnings) can be dismissed. Under deadline pressure,
+                                    they always are.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label enforced">We enforced</span>
+                                <p>Seven interrupt-after nodes in LangGraph. The pipeline cannot execute past them.
+                                    Enforced at the workflow layer, not the interface layer.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label impact">Why it matters</span>
+                                <p>Because AI makes confident wrong guesses, validation must be structurally impossible
+                                    to skip.</p>
+                            </div>
+                        </div>
+
+                        <!-- S3 -->
+                        <div class="decision-block">
+                            <div class="decision-block-header">Governed learning over automatic</div>
+                            <div class="decision-col">
+                                <span class="decision-label tension">Tension</span>
+                                <p>Automatic global learning is fast. It's also dangerous &mdash; one wrong correction
+                                    corrupts every future query of that type.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label enforced">We enforced</span>
+                                <p>'Remember this' &rarr; email to analytics team + founder &rarr; manual validation
+                                    &rarr; Firestore update &rarr; injected as hard requirement.</p>
+                            </div>
+                            <div class="decision-col">
+                                <span class="decision-label impact">Why it matters</span>
+                                <p>Because AI output must be trustworthy over time, corrections must be as governed as
+                                    the original outputs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3
+                            style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                            Three UX choices embedded in the system design.</h3>
+                        <div class="decision-blocks" style="margin-top: 0;">
+                            <!-- U1 -->
+                            <div class="decision-block">
+                                <div class="decision-block-header">Inline explainability at every gate</div>
+                                <div class="decision-col">
+                                    <span class="decision-label tension">Tension</span>
+                                    <p>Validation gates without explanation produce rubber-stamping &mdash; users click
+                                        through without reading. The gate exists but oversight doesn't.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label enforced">We enforced</span>
+                                    <p>Every generated JQL includes inline comments explaining each clause. Technical
+                                        Query is generated in plain English before any code. Understanding precedes
+                                        approval.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label impact">Why it matters</span>
+                                    <p>Approval without understanding = liability transfer. Editable output + inline
+                                        explanation = genuine oversight.</p>
+                                </div>
+                            </div>
+
+                            <!-- U2 -->
+                            <div class="decision-block">
+                                <div class="decision-block-header">Mandatory time + entity constraints at input</div>
+                                <div class="decision-col">
+                                    <span class="decision-label tension">Tension</span>
+                                    <p>AI tools that accept ambiguous input &mdash; 'today only', 'last week', game
+                                        names with aliases &mdash; fill the gap with confident guesses. The
+                                        2015&ndash;2025 date bug is one documented example.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label enforced">We enforced</span>
+                                    <p>Mandatory explicit time range before processing. Semantic resolution against
+                                        canonical game list before event selection. Ambiguity blocked, not resolved
+                                        probabilistically.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label impact">Why it matters</span>
+                                    <p>Responsible AI design means: if you can't resolve it correctly, don't resolve it
+                                        at all. Stop and ask.</p>
+                                </div>
+                            </div>
+
+                            <!-- U3 -->
+                            <div class="decision-block">
+                                <div class="decision-block-header">Output always positioned as a draft</div>
+                                <div class="decision-col">
+                                    <span class="decision-label tension">Tension</span>
+                                    <p>Final-looking output creates false confidence. Once a chart appears, users anchor
+                                        to it &mdash; even if it's wrong.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label enforced">We enforced</span>
+                                    <p>Every result stage ends with an explicit feedback prompt. The system names its
+                                        output as provisional. No output is the 'answer' &mdash; it's the current best
+                                        attempt.</p>
+                                </div>
+                                <div class="decision-col">
+                                    <span class="decision-label impact">Why it matters</span>
+                                    <p>Because AI output is probabilistic, the interface must communicate uncertainty
+                                        &mdash; not eliminate it.</p>
+                                </div>
+                            </div>
+                        </div>
+            </section>
+
+            <!-- Human-in-the-loop -->
+            <section class="section" id="hitl">
+                <div class="section-header">
+                    <span class="section-label">Human-in-the-loop</span>
+                    <h2 class="section-statement">Humans don’t assist the system. They validate it.</h2>
+                </div>
+                <div class="content-block" style="max-width: 800px;">
+                    <p
+                        style="font-size: 1.25rem; font-weight: 500; color: var(--text-primary); margin-bottom: 3rem; line-height: 1.6;">
+                        The system executes &rarr; stops &rarr; requires human action.<br>
+                        No validation &rarr; no progress.<br>
+                        <span style="color: var(--text-secondary);">Validation is not a step. It&rsquo;s a
+                            constraint.</span>
+                    </p>
+
+                    <figure class="diagram-container"
+                        style="text-align: center; width: 100%; border-radius: 12px; overflow: hidden; background: var(--surface-color); padding: 3rem 2rem; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+                        <img src="/Users/srinidhigs/.gemini/antigravity/brain/0158ba99-4c73-4b87-86d2-ffa07b64bbdd/media__1774381111342.png"
+                            alt="Atomic HITL unit flow chart"
+                            style="max-height: 450px; width: auto; display: inline-block;">
+                    </figure>
+                    <p
+                        style="font-size: 0.95rem; text-align: center; color: var(--text-secondary); margin: 0; font-style: italic;">
+                        Atomic HITL unit &mdash; enforced interruption in the pipeline
+                    </p>
+                </div>
+            </section>
+
+
+            <section class="section" id="before-vs-after">
+                <div class="section-header">
+                    <span class="section-label">Before vs After</span>
+                    <h2 class="section-statement">The shift wasn’t a better tool. It was a different relationship with
+                        data.</h2>
+                </div>
+
+                <div class="before-after-grid">
+                    <!-- Before Column -->
+                    <div class="ba-column before-column">
+                        <h3 class="ba-column-title">Before</h3>
+                        <div class="ba-row">
+                            <span class="ba-label">Decision tempo</span>
+                            <p>PM waits 4+ hours, decides before data</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Translation</span>
+                            <p>Analyst interprets, no verification</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Trust</span>
+                            <p>No reasoning, blind acceptance</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Learning</span>
+                            <p>No memory, errors repeat</p>
+                        </div>
+                    </div>
+
+                    <!-- After Column -->
+                    <div class="ba-column after-column">
+                        <h3 class="ba-column-title">After</h3>
+                        <div class="ba-row">
+                            <span class="ba-label">Decision tempo</span>
+                            <p>Answers in minutes, decisions informed</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Translation</span>
+                            <p>Visible, user-approved</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Trust</span>
+                            <p>Reasoning + editable queries</p>
+                        </div>
+                        <div class="ba-row">
+                            <span class="ba-label">Learning</span>
+                            <p>Corrections stored and reused</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact -->
+            <section class="section" id="impact">
+                <div class="section-header">
+                    <span class="section-label">Impact</span>
+                    <h2 class="section-statement">From blocked insights to real-time, trusted decisions</h2>
+                </div>
+                <div class="content-block">
+                    <p class="lead-text">We didn’t just improve analytics — we changed how decisions are made.</p>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">4h → &lt;5m</div>
+                        <div class="metric-label">Insight latency reduced from hours to near real-time</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">~95%</div>
+                        <div class="metric-label">Accuracy after learning loop adaptation</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">7</div>
+                        <div class="metric-label">Validation gates ensuring no silent failures</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">3 LLMs</div>
+                        <div class="metric-label">A/B tested in production for reliability</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">0 analysts needed</div>
+                        <div class="metric-label">Standard queries no longer require analyst intervention</div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <p class="conclusion-text" style="font-weight: 400; color: var(--text-secondary);">Users stopped
+                        questioning the output — because they understood it.</p>
+                </div>
+            </section>
+
+            <!-- Explainability -->
+            <section class="section" id="explainability">
+                <div class="section-header">
+                    <span class="section-label">Known Gaps</span>
+                    <h2 class="section-statement">What still breaks — and why it matters</h2>
+                </div>
+                <div class="content-block" style="font-size: 1.125rem; line-height: 1.6; max-width: 800px;">
+                    <p style="color: var(--text-primary); margin-bottom: 1.5rem;">
+                        The system enforces correctness through structure.<br>
+                        <span style="color: var(--text-secondary);">But not all uncertainty is surfaced yet.</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin: 0;">
+                        Some steps require more scrutiny than others &mdash;<br>
+                        <span style="color: var(--text-secondary);">that signal is not explicit today.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Learnings -->
+            <section class="section" id="learnings">
+                <div class="section-header">
+                    <span class="section-label">Key Learnings</span>
+                    <h2 class="section-statement">Designing for AI is designing for uncertainty</h2>
+                </div>
+                <div class="content-block" style="max-width: 800px; font-size: 1.125rem; line-height: 1.6;">
+
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                        The point of view that came out of this</h3>
+                    <p style="color: var(--text-primary); margin-bottom: 1.5rem;">
+                        AI UX is not about making things faster.<br>
+                        <span style="color: var(--text-secondary);">It is about making uncertainty visible &mdash; and
+                            manageable.</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin-bottom: 2rem;">
+                        Every design decision in this system came down to one question:<br>
+                        <strong>When the AI is uncertain, what does the user see?</strong>
+                    </p>
+                    <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 3rem;">
+                        A spinner?<br>
+                        A confident answer?<br>
+                        Or a structured moment of judgment?<br><br>
+                        <span style="color: var(--text-primary); font-style: normal; font-weight: 500;">That choice
+                            defines the product.</span>
+                    </p>
+
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                        The real product</h3>
+                    <p style="color: var(--text-primary); margin-bottom: 1.5rem;">
+                        The real product was not the query generator.<br>
+                        It was not the pipeline.<br><br>
+                        <span style="font-weight: 500;">It was the validation moment.</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin-bottom: 3rem;">
+                        And more importantly &mdash;<br>
+                        whether that moment enabled genuine comprehension or merely created the illusion of
+                        understanding.<br><br>
+                        <span style="color: var(--text-secondary);">Those are not the same thing.<br>
+                            And that gap compounds across every downstream decision.</span>
+                    </p>
+
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                        The uncomfortable truth about AI</h3>
+                    <p style="color: var(--text-primary); margin-bottom: 1.5rem;">
+                        AI doesn&rsquo;t fail loudly.<br>
+                        <span style="color: var(--text-secondary);">It fails convincingly.</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin-bottom: 2rem;">
+                        Which means:<br><br>
+                        <span style="text-decoration: line-through; color: var(--text-secondary);">The product is not
+                            the query</span><br>
+                        <span style="font-weight: 500;">The product is the validation layer</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin-bottom: 3rem; font-weight: 500;">
+                        We deliberately chose friction over silent failure.
+                    </p>
+
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+                        The hardest design problem</h3>
+                    <p style="color: var(--text-primary); margin-bottom: 1.5rem;">
+                        A validation gate that looks trustworthy but doesn&rsquo;t provide enough information for real
+                        decision-making is not safety.<br><br>
+                        <span style="color: var(--text-secondary);">It is the appearance of safety.</span>
+                    </p>
+                    <p style="color: var(--text-primary); margin-bottom: 3rem;">
+                        Designing the difference between:<br><br>
+                        <span style="font-weight: 500;">Real understanding</span><br>
+                        <span style="color: var(--text-secondary);">Perceived understanding</span><br><br>
+                        &hellip;is the core challenge of building AI products for real-world use.
+                    </p>
+
+                    <h3
+                        style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.01em; border-top: 1px solid var(--border-color); padding-top: 3rem;">
+                        What I&rsquo;d build next</h3>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 1.5rem;">
+                            <strong
+                                style="display: block; color: var(--text-primary); margin-bottom: 0.25rem;">Confidence-aware
+                                UX</strong>
+                            <span style="color: var(--text-secondary); display: block;">Surface per-query
+                                uncertainty</span>
+                            <span style="color: var(--text-secondary); display: block;">Adapt friction dynamically (fast
+                                for high-confidence, pause for risky queries)</span>
+                        </li>
+                        <li style="margin-bottom: 1.5rem;">
+                            <strong
+                                style="display: block; color: var(--text-primary); margin-bottom: 0.25rem;">Cross-session
+                                learning</strong>
+                            <span style="color: var(--text-secondary); display: block;">Validated corrections should
+                                propagate across teams/pods</span>
+                            <span style="color: var(--text-secondary); display: block;">Move from session-based memory
+                                &rarr; system intelligence</span>
+                        </li>
+                        <li style="margin-bottom: 0;">
+                            <strong style="display: block; color: var(--text-primary); margin-bottom: 0.25rem;">Bias
+                                &amp; drift visibility</strong>
+                            <span style="color: var(--text-secondary); display: block;">Track classification confidence
+                                over time</span>
+                            <span style="color: var(--text-secondary); display: block;">Detect silent degradation before
+                                users do</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Final POV -->
+            <section class="section" id="final-pov">
+                <div class="section-header">
+                    <span class="section-label">Final POV</span>
+                    <h2 class="section-statement">AI shouldn’t replace thinking. It should make thinking safer.</h2>
+                </div>
+                <div class="content-block">
+                    <p class="conclusion-text">In enterprise AI, the process is the product. A black box that produces
+                        the right answer is inherently less trusted than a transparent box that needs manual correction.
+                        You aren't trying to remove the human from the loop; you are elevating them from a query-writer
+                        to a validator.</p>
+                    <hr class="divider">
+                    <p class="sign-off">Thanks for reading. ✌️</p>
+                </div>
+            </section>
+
+        </article>
+
+        <!-- Table of Contents Sidebar -->
+        <aside class="table-of-contents">
+            <div class="toc-sticky">
+                <h3>On this page</h3>
+                <ul>
+                    <li><a href="#context">Context</a></li>
+                    <li><a href="#problem">The Translation Problem</a></li>
+                    <li><a href="#who-is-this-for">Who is this for</a></li>
+                    <li><a href="#reframing">Reframing the Challenge</a></li>
+                    <li><a href="#the-idea">The Idea (Ask → Understand → Act)</a></li>
+                    <li><a href="#system-design">System Architecture</a></li>
+                    <li><a href="#behavior-change">System in Motion</a></li>
+                    <li><a href="#ux-architecture">AI UX Principles</a></li>
+                    <li><a href="#hitl">Human-in-the-loop</a></li>
+                    <li><a href="#before-vs-after">Before vs After</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#explainability">Known Gaps</a></li>
+                    <li><a href="#learnings">Key Learnings</a></li>
+                    <li><a href="#final-pov">Final POV</a></li>
+                    <li style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);"><a
+                            href="index.html" style="color: var(--text-primary); font-weight: 600;">Prototype
+                            &nearr;</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Analytics Prototype. Case Study Layout.</p>
+    </footer>
+
+    <!-- Scripts for interactivity (TOC highlight) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.intersectionRatio > 0) {
+                        document.querySelectorAll('.table-of-contents a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        const activeLink = document.querySelector(`.table-of-contents a[href="#${id}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section[id]').forEach((section) => {
+                observer.observe(section);
+            });
+
+            // Smooth scrolling for TOC links
+            document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -63,19 +63,6 @@ const projectsData = [
         directLink: "file:///Users/srinidhigs/Documents/analytics-hitl-prototype/case-study.html"
     },
 
-
-    {
-        id: "erp-logiflow",
-        title: "LogiFlow ERP",
-        description: "Logiflow Case StudyThis is a self-initiated enterprise systems design project where I explored how fragmented logistics dispatch operations could be redesigned into a unified, role-aware platform.",
-        tags: ["ERP", "UX Design", "Enterprise"],
-        thumbnail: "images/projects/ERP/Thumbnail ERP.png",
-        year: "2026",
-        role: "UX Strategy & Design",
-        directLink: "images/projects/ERP/Logiflow Case Study.html"
-    },
-
-
     {
         id: "PharmEasy",
         title: "Employee Benefits Platform",
@@ -96,6 +83,18 @@ const projectsData = [
             "images/projects/PharmEasy/PE8.png",
         ]
     },
+
+    {
+        id: "erp-logiflow",
+        title: "LogiFlow ERP",
+        description: "Logiflow Case StudyThis is a self-initiated enterprise systems design project where I explored how fragmented logistics dispatch operations could be redesigned into a unified, role-aware platform.",
+        tags: ["ERP", "UX Design", "Enterprise"],
+        thumbnail: "images/projects/ERP/Thumbnail ERP.png",
+        year: "2026",
+        role: "UX Strategy & Design",
+        directLink: "images/projects/ERP/Logiflow Case Study.html"
+    },
+
     {
         id: "Zepto-ui",
         title: "Smartlist - Zepto",

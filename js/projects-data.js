@@ -67,7 +67,7 @@ const projectsData = [
         title: "Employee Benefits Platform",
         description: "Corporate Healthcare Benefits Platform for PharmEasy",
         tags: ["Enterprise Design", "B2B"],
-        thumbnail: "images/projects/PharmEasy/Pharmeasy-Thumbnail.png",
+        thumbnail: "images/projects/PharmEasy/iPhone 16 Pro Mockup (1).gif",
         year: "2025",
         role: "Product Thinking · UX/UI Design · Branding",
         //collaborators: "Game Development Team",

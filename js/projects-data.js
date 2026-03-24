@@ -52,6 +52,19 @@ const projectsData = [
     // ==================
 
     {
+        id: "AI Analytics",
+        title: "AI Analytics",
+        description: "Every dataset has an answer. Not every answer deserves a decision.",
+        tags: ["ERP", "UX Design", "Enterprise"],
+        thumbnail: "images/projects/AI Analytics/UX Data GIF.gif",
+        year: "2026",
+        role: "UX Strategy & Design",
+        details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
+        directLink: "file:///Users/srinidhigs/Documents/analytics-hitl-prototype/case-study.html"
+    },
+
+
+    {
         id: "erp-logiflow",
         title: "LogiFlow ERP",
         description: "Logiflow Case StudyThis is a self-initiated enterprise systems design project where I explored how fragmented logistics dispatch operations could be redesigned into a unified, role-aware platform.",
@@ -61,6 +74,7 @@ const projectsData = [
         role: "UX Strategy & Design",
         directLink: "images/projects/ERP/Logiflow Case Study.html"
     },
+
 
     {
         id: "PharmEasy",

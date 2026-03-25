@@ -28,7 +28,7 @@
     --gap-width: 5rem;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: none) {
     :root {
         /* Color Palette - Dark Mode */
         --bg-color: #0F1115;
@@ -84,7 +84,7 @@ body {
     :root {
         --nav-bg: rgba(250, 250, 250, 0.85);
     }
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: none) {
         :root {
             --nav-bg: rgba(15, 17, 21, 0.85);
         }
@@ -902,7 +902,7 @@ body {
     position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: none) {
     .image-placeholder, .hero-image-placeholder {
         background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
         border: 1px dashed #374151;
@@ -973,7 +973,7 @@ body {
 .box-purple { border-left: 4px solid #8b5cf6; }
 .box-purple h4 { color: #8b5cf6; }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: none) {
     .box-amber h4 { color: #fba918; }
     .box-red h4 { color: #ef4444; }
     .box-blue h4 { color: #60a5fa; }
@@ -1015,7 +1015,7 @@ body {
     animation: shimmer 2.5s infinite;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: none) {
     .hero-image-placeholder::after, .image-placeholder::after {
         background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
     }

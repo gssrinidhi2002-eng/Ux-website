@@ -9,8 +9,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: #0d1117;
-  color: #c9d1d9;
+  background: #ffffff;
+  color: #334155;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.7;
@@ -23,17 +23,17 @@ body {
 
 /* ── Colours ──────────────────────────────────────────────────── */
 :root {
-  --navy:   #1b2a4a;
+  --navy:   #f8f9fa;
   --cobalt: #3b82f6;
   --gold:   #f59e0b;
   --purple: #7c3aed;
   --green:  #16a34a;
   --red:    #dc2626;
   --amber:  #d97706;
-  --mid:    #8b949e;
-  --border: #21262d;
-  --surface:#161b22;
-  --surface2:#1c2128;
+  --mid:    #64748b;
+  --border: #e2e8f0;
+  --surface:#f8f9fa;
+  --surface2:#f1f5f9;
 }
 
 /* ── Progress bar ─────────────────────────────────────────────── */
@@ -46,7 +46,7 @@ body {
 /* ── Nav ──────────────────────────────────────────────────────── */
 nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(13,17,23,0.92);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 24px;
@@ -57,14 +57,14 @@ nav {
   justify-content: space-between;
   height: 56px;
 }
-.nav-logo { font-size: 14px; font-weight: 600; color: #e6edf3; }
+.nav-logo { font-size: 14px; font-weight: 600; color: #0f172a; }
 .nav-logo span { color: var(--cobalt); }
 .nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
   font-size: 13px; color: var(--mid);
   text-decoration: none; transition: color 0.2s;
 }
-.nav-links a:hover { color: #e6edf3; }
+.nav-links a:hover { color: #0f172a; }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero {
@@ -85,7 +85,7 @@ nav {
 .hero h1 {
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 800; line-height: 1.1;
-  color: #e6edf3; letter-spacing: -0.03em;
+  color: #0f172a; letter-spacing: -0.03em;
   margin-bottom: 20px;
 }
 .hero h1 em { color: var(--cobalt); font-style: normal; }
@@ -104,7 +104,7 @@ nav {
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--mid); margin-bottom: 4px;
 }
-.meta-item .value { font-size: 14px; color: #e6edf3; font-weight: 500; }
+.meta-item .value { font-size: 14px; color: #0f172a; font-weight: 500; }
 
 /* ── Punch lines ──────────────────────────────────────────────── */
 .punch-block {
@@ -116,7 +116,7 @@ nav {
 .punch-line {
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 700; line-height: 1.3;
-  color: #e6edf3; margin-bottom: 12px;
+  color: #0f172a; margin-bottom: 12px;
 }
 .punch-line.muted { color: var(--mid); font-weight: 400; font-size: clamp(16px,2vw,22px); }
 .punch-line.accent { color: var(--cobalt); }
@@ -143,7 +143,7 @@ nav {
 }
 .section-header h2 {
   font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700; color: #e6edf3;
+  font-weight: 700; color: #0f172a;
   letter-spacing: -0.02em; margin-bottom: 12px;
 }
 .section-header p {
@@ -159,7 +159,7 @@ nav {
   border-radius: 0 8px 8px 0;
   margin: 32px 0;
   font-size: 16px; line-height: 1.7;
-  color: #c9d1d9;
+  color: #334155;
 }
 .callout.gold {
   border-color: var(--gold);
@@ -173,7 +173,7 @@ nav {
   border-color: var(--green);
   background: rgba(22,163,74,0.06);
 }
-.callout strong { color: #e6edf3; }
+.callout strong { color: #0f172a; }
 
 /* ── Two-col grid ─────────────────────────────────────────────── */
 .two-col {
@@ -208,7 +208,7 @@ nav {
 }
 .principle-header {
   padding: 16px 24px;
-  background: #1b2a4a;
+  background: #f1f5f9;
   display: flex; align-items: center; gap: 12px;
 }
 .principle-num {
@@ -219,7 +219,7 @@ nav {
   letter-spacing: 0.06em;
 }
 .principle-title {
-  font-size: 15px; font-weight: 600; color: #e6edf3;
+  font-size: 15px; font-weight: 600; color: #0f172a;
 }
 .principle-body {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
@@ -242,7 +242,7 @@ nav {
 .cell-label.amber  { color: var(--amber); }
 .cell-label.green  { color: var(--green); }
 .principle-cell p  { font-size: 13px; color: var(--mid); line-height: 1.55; }
-.principle-cell strong { color: #c9d1d9; }
+.principle-cell strong { color: #334155; }
 
 /* ── Layer cards ──────────────────────────────────────────────── */
 .layer-card {
@@ -254,15 +254,15 @@ nav {
 }
 .layer-header {
   padding: 16px 24px;
-  background: #2d1b69;
+  background: #f3e8ff;
   display: flex; align-items: baseline; gap: 10px;
 }
 .layer-num {
   font-size: 11px; font-weight: 700;
-  color: #a78bfa; letter-spacing: 0.06em;
+  color: #7e22ce; letter-spacing: 0.06em;
 }
-.layer-name { font-size: 15px; font-weight: 600; color: #e6edf3; }
-.layer-tag  { font-size: 12px; color: #a78bfa; font-style: italic; margin-left: auto; }
+.layer-name { font-size: 15px; font-weight: 600; color: #0f172a; }
+.layer-tag  { font-size: 12px; color: #7e22ce; font-style: italic; margin-left: auto; }
 .layer-body {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
 }
@@ -288,14 +288,14 @@ nav {
   letter-spacing: 0.06em; text-transform: uppercase;
   color: white;
 }
-.ss-badge.navy   { background: #1b2a4a; }
+.ss-badge.navy   { background: #1e3a8a; }
 .ss-badge.cobalt { background: #1d4ed8; }
 .ss-badge.purple { background: #5b21b6; }
 .ss-badge.red    { background: #991b1b; }
 .ss-badge.green  { background: #14532d; }
 .ss-img {
   width: 100%; display: block;
-  background: #080b14;
+  background: #f1f5f9;
 }
 .ss-img img { width: 100%; display: block; }
 .ss-caption {
@@ -303,7 +303,7 @@ nav {
   background: var(--surface2);
   border-top: 1px solid var(--border);
 }
-.ss-caption strong { font-size: 14px; color: #e6edf3; display: block; margin-bottom: 6px; }
+.ss-caption strong { font-size: 14px; color: #0f172a; display: block; margin-bottom: 6px; }
 .ss-caption p { font-size: 13px; color: var(--mid); line-height: 1.5; font-style: italic; }
 
 /* ── Sprint table ─────────────────────────────────────────────── */
@@ -316,7 +316,7 @@ nav {
   text-align: left; background: var(--surface);
 }
 .sprint-table td {
-  font-size: 13px; color: #c9d1d9;
+  font-size: 13px; color: #334155;
   padding: 14px; border-bottom: 1px solid var(--border);
   vertical-align: top; line-height: 1.5;
 }
@@ -333,7 +333,7 @@ nav {
   font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: white; padding: 12px 14px;
-  background: #1b2a4a; text-align: left;
+  background: #f1f5f9; text-align: left;
 }
 .three-col-table td {
   font-size: 13px; padding: 14px;
@@ -341,8 +341,8 @@ nav {
   vertical-align: top; line-height: 1.5;
 }
 .three-col-table tr:nth-child(odd) td  { background: var(--surface); }
-.three-col-table tr:nth-child(even) td { background: #0d1117; }
-.three-col-table td:first-child { font-weight: 600; color: #e6edf3; }
+.three-col-table tr:nth-child(even) td { background: #ffffff; }
+.three-col-table td:first-child { font-weight: 600; color: #0f172a; }
 .three-col-table td:last-child   { color: var(--mid); font-style: italic; }
 
 /* ── Metrics ──────────────────────────────────────────────────── */
@@ -379,9 +379,9 @@ nav {
 }
 .mem-line:first-child { border-radius: 10px 10px 0 0; }
 .mem-line:last-child  { border-radius: 0 0 10px 10px; }
-.mem-line.navy   { border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.07); color: #e6edf3; }
-.mem-line.cobalt { border-left: 4px solid var(--purple); background: rgba(124,58,237,0.07); color: #c4b5fd; }
-.mem-line.amber  { border-left: 4px solid var(--gold); background: rgba(245,158,11,0.07); color: #fcd34d; }
+.mem-line.navy   { border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.07); color: #0f172a; }
+.mem-line.cobalt { border-left: 4px solid var(--purple); background: rgba(124,58,237,0.07); color: #7e22ce; }
+.mem-line.amber  { border-left: 4px solid var(--gold); background: rgba(245,158,11,0.07); color: #b45309; }
 
 /* ── Diagram container ────────────────────────────────────────── */
 .diagram-wrap {
@@ -398,7 +398,7 @@ nav {
 .diagram-ann { flex: 1; }
 .diagram-ann h4 {
   font-size: 15px; font-weight: 600;
-  color: #e6edf3; margin-bottom: 16px;
+  color: #0f172a; margin-bottom: 16px;
 }
 .ann-item { margin-bottom: 16px; }
 .ann-item .ann-label {
@@ -426,7 +426,7 @@ nav {
   border-radius: 4px; padding: 3px 10px;
 }
 .gap-badge-header h3 {
-  font-size: 15px; font-weight: 700; color: #e6edf3;
+  font-size: 15px; font-weight: 700; color: #0f172a;
 }
 .gap-badge p { font-size: 14px; color: var(--mid); line-height: 1.6; }
 

@@ -64,6 +64,18 @@ const projectsData = [
     },
 
     {
+        id: "MoodGlobe",
+        title: "Veritaserum ",
+        description: "Understanding the emotional state of the world at a glance",
+        tags: ["Information Design ", "Real Time System", "Data Visualization"],
+        thumbnail: "images/projects/Moodglobe/GIF Pin.gif",
+        year: "2026",
+        role: "UX Strategy & Visual Design",
+        details: "An experimental data visualization that translates live news narratives into an emotional map of the world using lightweight sentiment modeling.",
+        directLink: "file:///Users/srinidhigs/Downloads/mood%20globe%203.html"
+    },
+
+    {
         id: "PharmEasy",
         title: "Employee Benefits Platform",
         description: "Corporate Healthcare Benefits Platform for PharmEasy",

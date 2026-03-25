@@ -60,7 +60,7 @@ const projectsData = [
         year: "2026",
         role: "UX Strategy & Design",
         details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
-        directLink: "/images/projects/AI Analytics/case-study.html"
+        directLink: "images/projects/AI%20Analytics/analytics-hitl-prototype/case-study.html"
     },
 
     {

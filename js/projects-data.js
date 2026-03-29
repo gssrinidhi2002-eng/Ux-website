@@ -60,7 +60,7 @@ const projectsData = [
         year: "2026",
         role: "UX Strategy & Design",
         details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
-        directLink: "images/projects/AI%20Analytics/analytics-hitl-prototype/case-study.html"
+        directLink: "images/projects/AI Analytics/analytics-hitl-prototype/case-study.html"
     },
 
     {
@@ -71,8 +71,8 @@ const projectsData = [
         thumbnail: "images/projects/Moodglobe/GIF Pin.gif",
         year: "2026",
         role: "UX Strategy & Visual Design",
-        details: "An experimental data visualization that translates live news narratives into an emotional map of the world using lightweight sentiment modeling.",
-        directLink: "file:///Users/srinidhigs/Downloads/mood%20globe%203.html"
+        details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
+        directLink: "images/projects/AI%20Analytics/analytics-hitl-prototype/case-study.html"
     },
 
     {

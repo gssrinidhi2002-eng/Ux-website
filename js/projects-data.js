@@ -56,11 +56,11 @@ const projectsData = [
         title: "AI Analytics",
         description: "Every dataset has an answer. Not every answer deserves a decision.",
         tags: ["systems design ", "UX Design", "HITL"],
-        thumbnail: "images/projects/AI Analytics/UX Data GIF.gif",
+        thumbnail: "images/projects/AI-Analytics/UX Data GIF.gif",
         year: "2026",
         role: "UX Strategy & Design",
         details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
-        directLink: "images/projects/AI Analytics/analytics-hitl-prototype/case-study.html"
+        directLink: "images/projects/AI-Analytics/analytics-hitl-prototype/case-study.html"
     },
 
     {
@@ -72,7 +72,7 @@ const projectsData = [
         year: "2026",
         role: "UX Strategy & Visual Design",
         details: "AI Analytics is a human-in-the-loop system that transforms business questions into validated data insights through a structured pipeline. Instead of optimizing for speed, it enforces visibility, editability, and verification at every step—ensuring AI-generated outputs cannot silently be wrong.",
-        directLink: "images/projects/AI%20Analytics/analytics-hitl-prototype/case-study.html"
+        directLink: "images/projects/AI-Analytics/analytics-hitl-prototype/case-study.html"
     },
 
     {

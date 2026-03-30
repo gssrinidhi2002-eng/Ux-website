@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversational Analytics AI - Light Theme</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Highlight.js for Code (Light Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Left Sidebar (Light Theme + Collapsed States) -->
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-header">
+                <div class="brand" id="brand-toggle" title="Expand Sidebar">
+                    <i class="fa-regular fa-clock" style="color: var(--accent-blue);"></i> <span>Analytics AI</span>
+                </div>
+                <button class="icon-btn collapse-btn" id="collapse-btn" title="Collapse Sidebar"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+            
+            <div class="sidebar-divider"></div>
+            
+            <div class="sidebar-project">
+                <div class="project-dropdown-container">
+                    <div class="project-dropdown" id="project-dropdown-btn">
+                        <span id="selected-project">Terra Games</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <!-- Dropdown Options Box -->
+                    <div class="dropdown-menu" id="project-options" style="display: none;">
+                        <div class="dropdown-item">Terra Games</div>
+                        <div class="dropdown-item">AI Games</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-actions">
+                <div class="btn-new-analysis-wrapper">
+                    <button class="btn-new-analysis">
+                        <i class="fa-solid fa-plus"></i> 
+                        <span class="btn-label">New Analysis</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="sidebar-history">
+                <div class="history-label">HISTORY</div>
+                
+                <div class="history-item active">
+                    <div class="history-title">Initial prompt about UI/UX improveme...</div>
+                    <div class="history-time">2 hours ago</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-title">Revenue analysis Q4 2024</div>
+                    <div class="history-time">Yesterday</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-title">User engagement metrics</div>
+                    <div class="history-time">3 days ago</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-title">Feature adoption rates</div>
+                    <div class="history-time">1 week ago</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area (Light Theme) -->
+        <main class="chat-main">
+            <div class="chat-feed" id="chat-feed">
+                <!-- Initial screen -->
+                <div class="intro-screen" id="intro-screen">
+                    <div class="intro-logo">Analytics AI</div>
+                    <h1>Chat with your smart product analyst.</h1>
+                </div>
+                <!-- Messages injected here -->
+            </div>
+            
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea id="user-input" placeholder="Ask your analyst anything... (e.g. Find correlation between D1 and D7 retention...)" rows="1"></textarea>
+                    <button id="send-btn" class="icon-btn-send">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                    <button class="icon-btn-attach">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                </div>
+                <div class="input-footer">Press Enter to send, Shift+Enter for new line</div>
+            </div>
+        </main>
+        
+        <!-- Right Panel - Progress Tracker (Light Theme) -->
+        <aside class="right-sidebar">
+            <div class="panel-header">
+                <h2>Analysis Progress</h2>
+                <button class="icon-btn"><i class="fa-solid fa-gear"></i></button>
+            </div>
+            
+            <div class="tracker-container">
+                <ul class="stepper" id="pipeline-stepper">
+                    <li class="step step-pending" data-step="1">
+                        <div class="step-indicator"><i class="fa-solid fa-circle"></i></div>
+                        <div class="step-content">
+                            <div class="step-title">User Query</div>
+                            <div class="step-description">Awaiting input...</div>
+                        </div>
+                    </li>
+                    <li class="step step-pending" data-step="2">
+                        <div class="step-indicator"><i class="fa-solid fa-circle"></i></div>
+                        <div class="step-content">
+                            <div class="step-title">Transforming Query</div>
+                            <div class="step-description">Pending</div>
+                        </div>
+                    </li>
+                    <li class="step step-pending" data-step="3">
+                        <div class="step-indicator"><i class="fa-solid fa-circle"></i></div>
+                        <div class="step-content">
+                            <div class="step-title">Data Extraction</div>
+                            <div class="step-description">Pending</div>
+                        </div>
+                    </li>
+                    <li class="step step-pending" data-step="4">
+                        <div class="step-indicator"><i class="fa-solid fa-circle"></i></div>
+                        <div class="step-content">
+                            <div class="step-title">Data Processing</div>
+                            <div class="step-description">Pending</div>
+                        </div>
+                    </li>
+                    <li class="step step-pending" data-step="5">
+                        <div class="step-indicator"><i class="fa-solid fa-circle"></i></div>
+                        <div class="step-content">
+                            <div class="step-title">Output</div>
+                            <div class="step-description">Pending</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="learning-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-bookmark" style="color: #f59e0b;"></i> Remember this Preference</h3>
+                <button class="close-modal" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>This will update global system behavior for processing this type of query.</p>
+                <div class="learning-diff" id="learning-diff-content">
+                    <div class="diff-row"><i class="fa-solid fa-plus" style="color: #10b981; margin-right: 8px;"></i> <strong>Missing Time:</strong> Default to <em>today only</em> when timeframe is implicitly omitted.</div>
+                </div>
+                <div class="modal-warning-wrapper">
+                    <i class="fa-solid fa-shield-halved" style="margin-top: 3px;"></i>
+                    <span>A request will be sent for lead analyst approval before this takes effect globally.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="cancel-learning">Cancel</button>
+                <button class="btn btn-primary" id="confirm-learning">Submit for Approval</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=4"></script>
+</body>
+</html>

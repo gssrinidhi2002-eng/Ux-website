@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mood Globe</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Federo&display=swap"
+        rel="stylesheet">
+    <!-- D3 for color scaling (optional, but good for custom scales) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/three-globe"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        federo: ['Federo', 'sans-serif'],
+                    },
+                    colors: {
+                        glass: 'rgba(15, 23, 42, 0.65)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: white;
+        }
+
+        #globeViz {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            display: block;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .pointer-events-auto {
+            pointer-events: auto;
+        }
+
+        .glass-panel {
+            pointer-events: auto;
+            background: rgba(10, 15, 25, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+        }
+
+        /* Tooltip styles */
+        .scene-tooltip {
+            pointer-events: none;
+            z-index: 20;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        .tooltip-card {
+            background: rgba(0, 5, 10, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            min-width: 150px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        /* Flip Card styles */
+        .flip-card-container {
+            perspective: 1000px;
+            z-index: 50;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 320px;
+            height: 120px;
+            transition: transform 0.4s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+        }
+
+        .flip-card-front-content {
+            position: relative;
+            z-index: 2;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .flip-card-back {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: rotateY(180deg);
+            padding: 1rem;
+            justify-content: space-between;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        /* Stars background animation */
+        #stars-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* Scrollbar styles for dropdown */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Search Dropdown styles */
+        #search-results {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        #search-results li {
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: #d1d5db;
+            transition: all 0.2s;
+        }
+
+        #search-results li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding-left: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Stars Background -->
+    <div id="stars-bg"></div>
+
+    <!-- 3D Globe Container -->
+    <div id="globeViz"></div>
+
+    <!-- UI Layer -->
+    <div id="ui-layer" class="flex flex-col justify-between p-6">
+
+        <!-- Top Bar -->
+        <div class="flex justify-between items-start pointer-events-auto w-full">
+
+            <!-- Branding & Controls -->
+            <div class="glass-panel p-4 flex flex-col gap-4 min-w-[320px]">
+
+                <!-- Logo & Tagline -->
+                <div class="flex flex-col gap-0.5">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=64&q=80"
+                            alt="Logo"
+                            class="w-8 h-8 rounded-full object-cover grayscale brightness-75 mix-blend-screen opacity-90 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        <h1 class="text-3xl text-white font-federo tracking-wide leading-none">Veritaserum</h1>
+                    </div>
+                </div>
+
+                <!-- Functional Header Controls -->
+                <div class="flex flex-col gap-3">
+
+                    <!-- Search Input -->
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-sm opacity-70">🔍</span>
+                        </div>
+                        <input type="text" id="country-search" placeholder="Search country..."
+                            class="w-full bg-black/40 border border-white/10 rounded-lg py-1.5 pl-9 pr-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-black/60 transition-all font-sans">
+
+                        <!-- Search Dropdown -->
+                        <ul id="search-results"
+                            class="absolute w-full mt-1 bg-[#0f172a]/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl shadow-black/50 hidden z-50 custom-scrollbar">
+                            <!-- Results injected here -->
+                        </ul>
+                    </div>
+
+                    <!-- Time Filter Tabs -->
+                    <div class="flex w-full bg-black/30 rounded-lg p-1 border border-white/5">
+                        <button
+                            class="flex-1 text-xs font-semibold py-1 rounded bg-white/10 text-white shadow-sm transition-all text-center">Live</button>
+                        <button
+                            class="flex-1 text-xs font-semibold py-1 rounded text-gray-400 hover:text-gray-200 hover:bg-white/5 transition-all text-center">24h</button>
+                        <button
+                            class="flex-1 text-xs font-semibold py-1 rounded text-gray-400 hover:text-gray-200 hover:bg-white/5 transition-all text-center">7d</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Global Signal Flip Card -->
+            <div class="flip-card-container fade-in" id="global-signal-container">
+                <div class="flip-card" id="global-signal-card">
+                    <!-- Front -->
+                    <div class="flip-card-front border-0 rounded-xl" id="signal-front-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')">
+                        <div class="flip-card-front-content">
+                            <span
+                                class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1 flex items-center gap-1.5 animate-pulse">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full inline-block"></span> Live Signal
+                            </span>
+                            <h3 class="text-sm font-semibold leading-tight line-clamp-2 drop-shadow-md"
+                                id="signal-headline">Loading signal...</h3>
+                            <div class="flex justify-between items-center mt-2 text-[10px] text-gray-300">
+                                <span class="bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-sm"
+                                    id="signal-source">Source</span>
+                                <span id="signal-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Back -->
+                    <div class="flip-card-back glass-panel rounded-xl">
+                        <div class="flex flex-col h-full pointer-events-none">
+                            <div class="flex justify-between items-start mb-1.5">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
+                                    id="signal-back-source">Source</span>
+                            </div>
+                            <p class="text-[11px] text-gray-300 leading-relaxed overflow-hidden text-ellipsis display-webkit-box webkit-line-clamp-3 webkit-box-orient-vertical"
+                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; line-clamp: 3;"
+                                id="signal-desc">Description loading...</p>
+                            <a href="#" id="signal-link" target="_blank"
+                                class="text-[10px] uppercase tracking-wider text-blue-400 hover:text-blue-300 font-semibold mt-auto inline-block pointer-events-auto relative z-50 py-1"
+                                onclick="event.stopPropagation()">Read Full Report →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Widgets -->
+        <div class="flex justify-between items-end pointer-events-auto w-full mt-auto pb-4">
+
+            <!-- Global Stats -->
+            <div class="flex flex-col gap-3">
+                <span class="font-federo text-[17px] text-white/95 ml-3 tracking-wide drop-shadow-md">Truth from
+                    noise</span>
+                <div class="glass-panel p-5 flex gap-8 shadow-lg shadow-black/50">
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">Globally</span>
+                        <span class="text-xl font-bold" id="global-index">Neutral 😐</span>
+                    </div>
+                    <div class="w-px bg-white/10"></div>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-green-400 uppercase tracking-widest mb-1">Happiest</span>
+                        <span class="text-lg font-semibold" id="happiest-country">--</span>
+                    </div>
+                    <div class="w-px bg-white/10"></div>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-red-400 uppercase tracking-widest mb-1">Most Tense</span>
+                        <span class="text-lg font-semibold" id="tense-country">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Focus Panel (Hidden by default) -->
+            <div id="country-panel"
+                class="bg-[#0b0e14]/95 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-[320px] translate-x-full opacity-0 transition-all duration-500 hidden z-50 shadow-2xl">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-2xl font-bold tracking-tight text-white" id="panel-country-name">--</h2>
+                    <button id="close-panel"
+                        class="text-gray-400 hover:text-white transition-colors flex items-center justify-center w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">✕</button>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Core Emotion -->
+                    <div class="flex items-center gap-4">
+                        <span class="text-4xl drop-shadow-md" id="panel-emoji">😊</span>
+                        <div class="flex flex-col">
+                            <span class="text-[11px] text-gray-400 uppercase tracking-widest font-medium mb-1">CURRENT
+                                MOOD</span>
+                            <span class="text-2xl font-bold tracking-tight" id="panel-mood">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Feed -->
+                    <div>
+                        <h3 class="text-[15px] font-semibold text-blue-300 mb-4 pb-3 border-b border-white/10">Live
+                            Narrative Signals</h3>
+                        <ul id="panel-signals"
+                            class="flex flex-col gap-5 max-h-52 overflow-y-auto pr-1 custom-scrollbar">
+                            <!-- Signals injected here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // --- CONSTANTS & CONFIG ---
+            const MOODS = {
+                optimistic: { color: '#4CAF50', emoji: '😊', label: 'Optimistic', score: 2 },
+                neutral: { color: '#FFC107', emoji: '😐', label: 'Neutral', score: 0 },
+                tense: { color: '#F44336', emoji: '😬', label: 'Tense', score: -2 },
+                sad: { color: '#2196F3', emoji: '😢', label: 'Sad', score: -1 },
+                uncertain: { color: '#9C27B0', emoji: '🤔', label: 'Uncertain', score: 0.5 }
+            };
+
+            const MOOD_KEYS = Object.keys(MOODS);
+
+            const SIGNAL_TEMPLATES = {
+                optimistic: [
+                    "Economic growth exceeds expectations this quarter.",
+                    "New sustainable technology breakthrough reported.",
+                    "Festival celebrations boosting local economy.",
+                    "Historic peace negotiations prove successful."
+                ],
+                neutral: [
+                    "Local elections underway in major districts.",
+                    "Annual infrastructure budget announced.",
+                    "Routine policy revisions discussed by parliament.",
+                    "Weather patterns remain stable ahead of harvest."
+                ],
+                tense: [
+                    "Protests escalate in capital over new laws.",
+                    "Inflation hits new high, sparking outrage.",
+                    "Border security increased following disputes.",
+                    "Political deadlock continues into fourth week."
+                ],
+                sad: [
+                    "Heavy flooding displaces thousands of locals.",
+                    "Market crash affects major regional employers.",
+                    "Health officials declare localized emergency.",
+                    "Wildlife conservation faces severe setback."
+                ],
+                uncertain: [
+                    "New experimental AI regulations proposed.",
+                    "Unidentified object spotted in lower atmosphere.",
+                    "Sudden leadership change leaves markets guessing.",
+                    "Major national company faces surprise acquisition."
+                ]
+            };
+
+            const HASHTAGS_TEMPLATES = {
+                optimistic: ["#Victory", "#Celebration", "#Growth", "#Innovation", "#Joy"],
+                neutral: ["#RoutineNews", "#DailyUpdate", "#Local", "#Governance", "#TodayId"],
+                tense: ["#Protest", "#Alert", "#Crisis", "#Breaking", "#DemandChange"],
+                sad: ["#Tragedy", "#Support", "#PrayFor", "#Loss", "#ReliefFund"],
+                uncertain: ["#WhatNow", "#Confusion", "#Changes", "#Future", "#Speculation"]
+            };
+
+            // --- STATE ---
+            let worldData = null;
+            let countriesMoodData = {}; // ISO_A3 -> mood obj
+            let selectedCountry = null;
+            let hoverTimeout = null;
+            let lastHovered = null;
+
+            // --- GLOBAL SIGNAL FLIP CARD ---
+            const signalCard = document.getElementById('global-signal-card');
+            let signalFlipTimeout = null;
+
+            signalCard.addEventListener('click', (e) => {
+                // If it's already flipped, do nothing (wait for timeout)
+                if (signalCard.classList.contains('flipped')) return;
+
+                signalCard.classList.add('flipped');
+
+                // Clear any existing timeout just in case
+                if (signalFlipTimeout) clearTimeout(signalFlipTimeout);
+
+                // Auto flip back after 10 seconds
+                signalFlipTimeout = setTimeout(() => {
+                    signalCard.classList.remove('flipped');
+                }, 10000);
+            });
+
+            const MOCK_SIGNALS = [
+                {
+                    title: "Global markets rally on tech breakthroughs",
+                    description: "Major tech companies reported synchronized breakthroughs in solid-state battery technology, sending global markets into a strong afternoon rally.",
+                    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80",
+                    source: "Reuters",
+                    time: "2m ago",
+                    link: "https://www.reuters.com/business/"
+                },
+                {
+                    title: "Unprecedented climate summit agreement reached",
+                    description: "190 nations have agreed to a legally binding acceleration of emission targets, stunning political analysts and setting aggressive new global standards.",
+                    image: "https://images.unsplash.com/photo-1611273426858-450d8ce800e7?auto=format&fit=crop&w=400&q=80",
+                    source: "BBC News",
+                    time: "15m ago",
+                    link: "https://www.bbc.com/news/science_and_environment"
+                },
+                {
+                    title: "Major disruption in international shipping routes",
+                    description: "Unexpected weather anomalies have temporarily halted heavily trafficked shipping lanes, causing minor supply chain concerns for the upcoming quarter.",
+                    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=400&q=80",
+                    source: "Bloomberg",
+                    time: "1h ago",
+                    link: "https://www.bloomberg.com/markets"
+                },
+                {
+                    title: "AI Regulation framework approved by UN panel",
+                    description: "A comprehensive framework for autonomous system safety was overwhelmingly approved today, establishing the first global standard for AI deployment.",
+                    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80",
+                    source: "AP News",
+                    time: "3h ago",
+                    link: "https://apnews.com/hub/artificial-intelligence"
+                }
+            ];
+
+            function updateGlobalSignal() {
+                const signal = MOCK_SIGNALS[Math.floor(Math.random() * MOCK_SIGNALS.length)];
+
+                // Flip back if flipped before updating content
+                if (signalCard.classList.contains('flipped')) {
+                    signalCard.classList.remove('flipped');
+                    setTimeout(applyContent, 400); // wait for flip animation
+                } else {
+                    applyContent();
+                }
+
+                function applyContent() {
+                    document.getElementById('signal-front-bg').style.backgroundImage = `url('${signal.image}')`;
+                    document.getElementById('signal-headline').innerText = signal.title;
+                    document.getElementById('signal-source').innerText = signal.source;
+                    document.getElementById('signal-time').innerText = signal.time;
+
+                    document.getElementById('signal-back-source').innerText = signal.source;
+                    document.getElementById('signal-desc').innerText = signal.description;
+                    document.getElementById('signal-link').href = signal.link;
+                }
+            }
+
+            // Update every 45 seconds
+            setInterval(updateGlobalSignal, 45000);
+            updateGlobalSignal(); // Initial load
+
+            // --- SEARCH FUNCTIONALITY ---
+            const searchInput = document.getElementById('country-search');
+            const searchResults = document.getElementById('search-results');
+
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                searchResults.innerHTML = '';
+
+                if (!term) {
+                    searchResults.classList.add('hidden');
+                    return;
+                }
+
+                if (!worldData || !worldData.features) return;
+
+                const matches = worldData.features.filter(feat => {
+                    const name = feat.properties.name || feat.properties.ADMIN || "";
+                    return name.toLowerCase().includes(term);
+                }).slice(0, 5); // top 5 results
+
+                if (matches.length > 0) {
+                    searchResults.classList.remove('hidden');
+                    matches.forEach(feat => {
+                        const name = feat.properties.name || feat.properties.ADMIN;
+                        const li = document.createElement('li');
+                        li.className = 'px-4 py-2 text-sm text-white hover:bg-white/10 cursor-pointer transition-colors';
+                        li.innerText = name;
+
+                        li.addEventListener('click', () => {
+                            // Close dropdown and clear input softly
+                            searchResults.classList.add('hidden');
+                            searchInput.value = name;
+
+                            // Simulate a click on the globe!
+                            if (window.d3) {
+                                const centroid = d3.geoCentroid(feat);
+                                world.pointOfView({
+                                    lat: centroid[1],
+                                    lng: centroid[0],
+                                    altitude: 1.8
+                                }, 800);
+                            }
+                            openCountryPanel(feat);
+                        });
+
+                        searchResults.appendChild(li);
+                    });
+                } else {
+                    searchResults.classList.remove('hidden');
+                    searchResults.innerHTML = '<li class="text-gray-500 hover:bg-transparent cursor-default pointer-events-none italic text-center text-xs py-3">No matching country found</li>';
+                }
+            });
+
+            // Close search dropdown if click outside
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.add('hidden');
+                }
+            });
+
+            // --- BACKGROUND STARS ---
+            function createStars() {
+                const container = document.getElementById('stars-bg');
+                container.innerHTML = ''; // reset
+                for (let i = 0; i < 150; i++) {
+                    const star = document.createElement('div');
+                    star.style.position = 'absolute';
+                    star.style.left = `${Math.random() * 100}vw`;
+                    star.style.top = `${Math.random() * 100}vh`;
+                    const size = Math.random() * 2.5;
+                    star.style.width = `${size}px`;
+                    star.style.height = star.style.width;
+                    star.style.backgroundColor = 'white';
+                    star.style.borderRadius = '50%';
+                    star.style.opacity = Math.random();
+                    star.style.animation = `pulse-glow ${3 + Math.random() * 4}s infinite`;
+                    container.appendChild(star);
+                }
+            }
+            createStars();
+
+            const world = Globe()(document.getElementById('globeViz'))
+                .width(window.innerWidth)
+                .height(window.innerHeight)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+                .showAtmosphere(true)
+                .atmosphereColor('lightskyblue')
+                .atmosphereAltitude(0.15)
+                .lineHoverPrecision(0)
+                .polygonsData([])
+                .polygonAltitude(0.01)
+                .polygonCapColor(feat => getCountryColor(feat))
+                .polygonSideColor(() => 'rgba(0, 10, 20, 0.2)')
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.3)')
+                .polygonLabel(feat => getTooltipHtml(feat))
+                .onPolygonHover(hoverFeat => {
+                    world.polygonAltitude(d => d === hoverFeat ? 0.04 : 0.01)
+                        .polygonCapColor(d => d === hoverFeat ? adjustColorOpacity(getCountryColor(d), 0.9) : getCountryColor(d));
+
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+
+                    if (hoverFeat) {
+                        // Immediately stop auto-rotation on hover
+                        world.controls().autoRotate = false;
+                    } else {
+                        // Resume auto-rotation when hover ends
+                        hoverTimeout = setTimeout(() => {
+                            world.controls().autoRotate = true;
+                        }, 100);
+                    }
+                })
+                .onPolygonClick(feat => {
+                    if (feat) {
+                        // Center and zoom in on the clicked country
+                        if (window.d3) {
+                            const centroid = d3.geoCentroid(feat);
+                            world.pointOfView({
+                                lat: centroid[1],
+                                lng: centroid[0],
+                                altitude: 1.8
+                            }, 800);
+                        }
+                        openCountryPanel(feat);
+                    }
+                });
+
+            // Set custom camera pos
+            world.pointOfView({ lat: 25, lng: 10, altitude: 2.5 });
+
+            // Auto-rotate
+            world.controls().autoRotate = true;
+            world.controls().autoRotateSpeed = 0.8;
+            world.controls().enableDamping = true;
+            world.controls().dampingFactor = 0.05;
+
+            // Ensure rotation resumes if mouse leaves the canvas entirely
+            document.getElementById('globeViz').addEventListener('mouseleave', () => {
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                world.controls().autoRotate = true;
+            });
+
+            // Handle Window Resize
+            const resizeGlobe = () => {
+                world.width(window.innerWidth).height(window.innerHeight);
+            };
+            window.addEventListener('resize', resizeGlobe);
+            resizeGlobe();
+
+            // --- DATA LOGIC ---
+            const STATIC_COUNTRIES = [
+                { name: "USA", mood: "tense" },
+                { name: "India", mood: "optimistic" },
+                { name: "Ukraine", mood: "sad" },
+                { name: "Japan", mood: "neutral" },
+                { name: "Brazil", mood: "optimistic" },
+                { name: "France", mood: "tense" },
+                { name: "Australia", mood: "neutral" },
+                { name: "South Africa", mood: "uncertain" },
+                { name: "Canada", mood: "optimistic" },
+                { name: "Germany", mood: "uncertain" }
+            ];
+
+            function generateRandomSignals(moodKey, countryName) {
+                const headlines = SIGNAL_TEMPLATES[moodKey];
+                const tags = HASHTAGS_TEMPLATES[moodKey];
+
+                const randomHeadline = headlines[Math.floor(Math.random() * headlines.length)];
+                const randomTag = tags[Math.floor(Math.random() * tags.length)];
+
+                return [
+                    { type: 'NEWS', source: 'NEWSAPI', text: randomHeadline },
+                    { type: 'SOCIAL', source: 'X / TWITTER', text: `${randomTag} is currently trending in ${countryName}` }
+                ];
+            }
+
+            function populateStaticData() {
+                if (!worldData) return;
+
+                let happiestScore = -999;
+                let tenseScore = 999;
+                let happiestName = "--";
+                let tenseName = "--";
+                let totalScore = 0;
+                let count = 0;
+
+                worldData.features.forEach(feat => {
+                    const name = feat.properties.name || feat.properties.ADMIN || "Unknown";
+                    const iso = feat.id || name;
+
+                    // Randomize a mood for EVERY country
+                    const randomMoodIndex = Math.floor(Math.random() * MOOD_KEYS.length);
+                    const moodKey = MOOD_KEYS[randomMoodIndex];
+
+                    const moodDef = MOODS[moodKey];
+                    const signals = generateRandomSignals(moodKey, name);
+
+                    countriesMoodData[iso] = {
+                        moodKey,
+                        color: moodDef.color,
+                        emoji: moodDef.emoji,
+                        label: moodDef.label,
+                        score: moodDef.score,
+                        signals
+                    };
+
+                    totalScore += moodDef.score;
+                    count++;
+
+                    if (moodDef.score > happiestScore) {
+                        happiestScore = moodDef.score;
+                        happiestName = name;
+                    }
+                    if (moodDef.score < tenseScore) {
+                        tenseScore = moodDef.score;
+                        tenseName = name;
+                    }
+                });
+
+                // Update UI
+                document.getElementById('happiest-country').innerText = happiestName;
+                document.getElementById('tense-country').innerText = tenseName;
+
+                let avgScore = count > 0 ? totalScore / count : 0;
+                let globalMood = 'Neutral 😐';
+                if (avgScore > 0.5) globalMood = 'Optimistic 😊';
+                else if (avgScore < -0.5) globalMood = 'Tense 😬';
+                else if (avgScore < -1) globalMood = 'Crisis 😢';
+
+                document.getElementById('global-index').innerText = globalMood;
+
+                // Trigger globe colors update
+                world.polygonCapColor(world.polygonCapColor());
+
+                // Re-render open panel if any
+                if (selectedCountry) openCountryPanel(selectedCountry);
+            }
+
+            // --- HELPERS ---
+            function adjustColorOpacity(rgbaStr, targetOpacity) {
+                return rgbaStr.replace(/rgba\((.*?),(.*?),(.*?),.*?\)/, `rgba($1,$2,$3, ${targetOpacity})`);
+            }
+
+            function getCountryColor(feat) {
+                const name = feat.properties.name || feat.properties.ADMIN || "Unknown";
+                const iso = feat.id || name;
+                const mData = countriesMoodData[iso];
+
+                if (!mData) return 'rgba(30, 30, 30, 0.8)'; // Dark grey
+
+                let hex = mData.color.replace('#', '');
+                let r = parseInt(hex.substring(0, 2), 16);
+                let g = parseInt(hex.substring(2, 4), 16);
+                let b = parseInt(hex.substring(4, 6), 16);
+
+                let alpha = 0.65;
+                return `rgba(${r},${g},${b}, ${alpha})`;
+            }
+
+            function getTooltipHtml(feat) {
+                const name = feat.properties.name || feat.properties.ADMIN || "Unknown";
+                const iso = feat.id || name;
+                const mData = countriesMoodData[iso];
+
+                if (!mData) return `
+                <div class="tooltip-card">
+                    <div class="font-bold text-gray-200">${name}</div>
+                    <div class="text-xs text-gray-500 mt-1">No sentiment data available</div>
+                </div>
+            `;
+
+                return `
+                <div class="tooltip-card">
+                    <div class="font-bold text-gray-200 mb-1">${name}</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl">${mData.emoji}</span>
+                        <span style="color: ${mData.color};" class="font-semibold">${mData.label}</span>
+                    </div>
+                </div>
+            `;
+            }
+
+            function openCountryPanel(feat) {
+                selectedCountry = feat;
+                const name = feat.properties.name || feat.properties.ADMIN || "Unknown";
+                const iso = feat.id || name;
+                const mData = countriesMoodData[iso];
+
+                if (!mData) return;
+
+                const panel = document.getElementById('country-panel');
+
+                document.getElementById('panel-country-name').innerText = name;
+                document.getElementById('panel-emoji').innerText = mData.emoji;
+                document.getElementById('panel-mood').innerText = mData.label;
+                document.getElementById('panel-mood').style.color = mData.color;
+
+                const signalsContainer = document.getElementById('panel-signals');
+                signalsContainer.innerHTML = '';
+
+                mData.signals.forEach(sig => {
+                    const li = document.createElement('li');
+                    li.className = "flex flex-col gap-2";
+
+                    li.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full ${sig.type === 'NEWS' ? 'bg-[#4CAF50]' : 'bg-[#4CAF50] opacity-80'} shadow-[0_0_8px_rgba(76,175,80,0.4)]"></span>
+                            <span class="text-[12px] font-bold text-gray-300 uppercase tracking-widest">${sig.source}</span>
+                        </div>
+                        <p class="text-[14.5px] text-gray-100 leading-snug pl-4 opacity-90">${sig.text}</p>
+                    `;
+                    signalsContainer.appendChild(li);
+                });
+
+                panel.classList.remove('hidden');
+                // small delay to allow display:block to apply before transition
+                setTimeout(() => {
+                    panel.classList.remove('translate-x-full', 'opacity-0');
+                }, 10);
+            }
+
+            function closeCountryPanel() {
+                selectedCountry = null;
+                const panel = document.getElementById('country-panel');
+                panel.classList.add('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    panel.classList.add('hidden');
+                }, 500);
+            }
+
+            document.getElementById('close-panel').addEventListener('click', closeCountryPanel);
+
+            // --- INIT ---
+            fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+                .then(res => res.json())
+                .then(countries => {
+                    worldData = countries;
+                    world.polygonsData(countries.features);
+
+                    populateStaticData();
+                });
+        });
+    </script>
+</body>
+
+</html>
